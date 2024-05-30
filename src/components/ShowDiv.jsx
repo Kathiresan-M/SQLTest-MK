@@ -33,7 +33,7 @@ export const ShowDiv = ({show,RegisterDetails,setMoveTopics,setUserDetails}) => 
   const handleSubmitBtn = async () => {
     setCreating(true);
       try {
-        const response = await fetch(`http://localhost:5000/register-user?user_otp=${Number(inputOtp)}&username=${RegisterDetails[0]}&password=${RegisterDetails[1]}&mobile=${RegisterDetails[2]}&gmail=${RegisterDetails[3]}&college=${RegisterDetails[4]}&yearOfGraduation=${RegisterDetails[5]}`);
+        const response = await fetch(`https://sqlserver-mk.onrender.com/register-user?user_otp=${Number(inputOtp)}&username=${RegisterDetails[0]}&password=${RegisterDetails[1]}&mobile=${RegisterDetails[2]}&gmail=${RegisterDetails[3]}&college=${RegisterDetails[4]}&yearOfGraduation=${RegisterDetails[5]}`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -57,7 +57,7 @@ export const ShowDiv = ({show,RegisterDetails,setMoveTopics,setUserDetails}) => 
   const handleResendBtn = async () => {
     setLoading(true);
       try {
-        const response = await fetch(`http://localhost:5000/check-user?gmail=${RegisterDetails[3]}`);
+        const response = await fetch(`https://sqlserver-mk.onrender.com/check-user?gmail=${RegisterDetails[3]}`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
