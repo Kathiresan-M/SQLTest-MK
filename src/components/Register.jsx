@@ -30,7 +30,7 @@ export const Register = () => {
       setFillAllData(false);
       setLoading(true);
       try {
-        const response = await fetch(`http://localhost:5000/check-user?gmail=${email}`);
+        const response = await fetch(`https://sqlserver-mk.onrender.com/check-user?gmail=${email}`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
