@@ -1,0 +1,231 @@
+.sqltopics-main-container{
+    background-color: #F5F5F5;
+    height: 6500px;
+    width: 100%;
+    padding: 20px;
+}
+.sqltopics-container{
+    background-color: #F5F5F5;
+    height: auto;
+    width: 60%;
+    margin: 0px auto;
+    padding-bottom:20px ;
+}
+.sqltopics-container h1{
+    font-size: 50px;
+    text-align: center;
+}
+.usernameSQL{
+    background-color: #201F3D;
+    margin-left: 10px;
+    padding: 10px;
+    float: left;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+}
+.usernameSQL1{
+    background-color: #201F3D;
+    margin-left: 10px;
+    padding: 10px;
+    float: right;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+.usernameSQL img{
+    height: 30px;
+    width: 30px;
+    
+}
+.usernameSQL h3{
+    color: white;
+    text-align: center;
+    margin-left: 10px;
+}
+.usernameSQL1 h3{
+    color: white;
+    text-align: center;
+    margin-left: 10px;
+}
+.sqltopics-box{
+    margin-top: 10px;
+    height: 6500px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.5);
+}
+.sqltopics-left{
+    float: left;
+    width: 10%; 
+    height: auto;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+.sqltopics-right{
+    float: right;
+    width: 90%;
+    height: auto;
+    padding-bottom: 10px;
+}
+.Hline{
+    background-color: #E1E1E1;
+    height: auto;
+    margin-top: 20px;
+    padding-bottom: 300px;
+    width: 20px;
+    border-radius: 10px 10px 10px 10px;
+}
+.round{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: white;
+}
+.round-1{
+    margin-top: 35px;
+    border: 5px solid #41516C;
+}
+.round-2{
+    margin-top: 380px;
+    border: 5px solid #FBCA3E;
+}
+.round-3{
+    margin-top: 962px;
+    border: 5px solid #E24A68;
+}
+.round-4{
+    margin-top: 338px;
+    border: 5px solid #1B5F8C;
+}
+.round-5{
+    margin-top: 375px;
+    border: 5px solid #030203;
+}
+.round-6{
+    margin-top: 630px;
+    border: 5px solid #1CE889;
+}
+.round-7{
+    margin-top: 365px;
+    border: 5px solid #660742;
+}
+.round-8{
+    margin-top: 358px;
+    border: 5px solid #ACB806;
+}
+.round-9{
+    margin-top: 360px;
+    border: 5px solid #86CC04;
+}
+.round-10{
+    margin-top: 520px;
+    border: 5px solid #4CADAD;
+}
+.round-11{
+    margin-top: 395px;
+    border: 5px solid #04B5CC;
+}
+.round-12{
+    margin-top: 370px;
+    border: 5px solid #0E04CC;
+}
+.round-13{
+    margin-top: 435px;
+    border: 5px solid #201F3D;
+}
+.round-14{
+    margin-top: 335px;
+    border: 5px solid #916527;
+}
+.round-15{
+    margin-top: 855px;
+    border: 5px solid #377D24;
+}
+.sqltopics-right ul{
+    width: 70%;
+    margin: 0px auto;
+    height: auto;
+    padding: 20px;
+    /* background-color: white; */
+}
+.sqltopics-right ul li{
+    list-style: none;
+    margin-top: 50px;
+}
+.sqltopics-right ul li:first-child{
+        list-style: none;
+        margin-top: 20px;
+}
+.heading{
+    padding: 10px;
+    background-color: #41516C;
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 40px 40px 40px 40px;
+}
+.heading-2{
+    background-color: #FBCA3E;
+}
+.heading-3{
+    background-color: #E24A68;
+}
+.heading-4{
+    background-color: #1B5F8C;
+}
+.heading-5{
+    background-color: #030203;
+}
+.heading-6{
+    background-color: #1CE889;
+}
+.heading-7{
+    background-color: #660742;
+}
+.heading-8{
+    background-color: #ACB806;
+}
+.heading-9{
+    background-color: #86CC04;
+}
+.heading-10{
+    background-color: #4CADAD;
+}
+.heading-11{
+    background-color: #04B5CC;
+}
+.heading-12{
+    background-color: #0E04CC;
+}
+.heading-13{
+    background-color: #201F3D;
+}
+.heading-14{
+    background-color: #916527;
+}
+.heading-15{
+    background-color: #377D24;
+}
+.sublist{
+    background-color: #F5F5F5;
+    color: black;
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+    font-size: 20px;
+    box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.5);
+}
+.link-color{
+    color: black;
+}
+.desc{
+    margin-top: 20px;
+    background-color: #F5F5F5;
+    box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    font-size: 18px;
+}

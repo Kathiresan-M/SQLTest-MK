@@ -1,0 +1,246 @@
+.sqltest-main-container{
+    margin: 0;
+    font-size: 18px;
+    font-family: sans-serif;
+    background-color: #D3C5E5;
+    min-height: 100vh;
+    padding-bottom: 10px;
+    
+}
+.mainTitle{
+    text-align: center;
+    padding: 10px;
+}
+.userwel{
+    text-align: center;
+    background-color: #735DA5;
+    padding: 10px;
+    color: white;
+    height: 120px;
+}
+.userwel h3{
+    margin-top: 10px;
+}
+.username-left{
+    text-align: center;
+    background-color: cornsilk;
+    color: black;
+    width: 150px;
+    float: left;
+    border-radius: 7px;
+    padding: 5px 10px;
+}
+.username-right{
+    text-align: center;
+    background-color: cornsilk;
+    color: black;
+    width: 180px;
+    float: right;
+    border-radius: 7px;
+    padding: 5px 10px;
+}
+.sqltest-container{
+    height: fit-content;
+    padding-top: 10px;
+    background-color: #D3C5E5;
+    padding-bottom: 10px;
+}
+.sqltest-left{
+    float:left;
+    width: 50%;
+    height: auto;
+    background-color: #D3C5E5;
+    padding-bottom: 10px;
+}
+.question-con{
+    margin-top: 10px;
+    margin-left: 10px;
+    background-color: #D3C5E5;
+    height: auto;
+    padding-bottom:10px;
+    width:90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.question-con p{
+    margin-top: 20px;
+    width: 90%;
+}
+.question-con h5{
+    margin-top: 20px;
+}
+.question-table{
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+.question-table th,.question-table td{
+    border: 1px solid;
+    padding: 5px 20px;
+}
+.question-table tr:nth-child(odd){
+    background-color: aliceblue;
+}
+.question-table tr:nth-child(even){
+    background-color: white;
+}
+.question-table tr th{
+    background-color:aqua;
+}
+.expected-table tr:first-child{
+    background-color: aqua !important;
+}
+.expected-table tr:nth-child(odd){
+    background-color: aliceblue;
+}
+.expected-table tr:nth-child(even){
+    background-color: white;
+}
+.expected-btn{
+    background-color: white;
+    color: black;
+    margin-top: 20px;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    padding: 5px 7px;
+}
+.expected-table{
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+.expected-table th,.expected-table td{
+    border: 1px solid;
+    padding: 5px 20px;
+}
+.sqltest-right{
+    float:right;
+    width: 50%;
+    height: auto;
+    background-color: #D3C5E5;
+    padding-bottom: 10px;
+}
+.output-query-box{
+    width: 90%;
+    height: auto;
+    background-color: #D3C5E5;
+    padding-bottom: 10px;
+    margin: 0 auto;
+}
+.enter-query{
+    margin-top: 10px;
+}
+.query-input{
+    width: 90%;
+    margin-top: 10px;
+    height: 80px;
+    color: black;
+    padding: 10px;
+    font-size: 16px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.leftright1{
+    width: 90%;
+    margin: 0 auto;
+}
+.execute-query{
+    float: left;
+    background-color: white;
+    color: black;
+    margin-top: 20px;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    padding: 5px 7px;
+}
+.submit-query{
+    float: right;
+    background-color: white;
+    color: black;
+    margin-top: 20px;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    padding: 5px 7px;
+}
+.display-none{
+    display: none !important;
+}
+.clear-both{
+    clear: both;
+}
+.output-table-div{
+    width: 100%;
+    height: 300px;
+    overflow: auto;
+    margin-top: 10px;
+}
+.output-table{
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+.output-table tr:first-child{
+    background-color: aqua !important;
+}
+.output-table tr:nth-child(odd){
+    background-color: aliceblue;
+}
+.output-table tr:nth-child(even){
+    background-color: white;
+}
+.output-table th,.output-table td{
+    border: 1px solid;
+    padding: 4px 3px;
+}
+.previous-btn{
+    float: left;
+    background-color: white;
+    color: black;
+    margin-top: 20px;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    padding: 5px 20px;
+}
+.next-btn{
+    float: right;
+    background-color: white;
+    color: black;
+    margin-top: 20px;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    padding: 5px 30px;
+}
+.empty{
+    padding: 10px;
+    background-color: #D3C5E5;
+}
+.correct-ans{
+    margin-top: 10px;
+    height: 30px;
+    width: 300px;
+    background-color: green;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius:5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.wrong-ans{
+    margin-top: 10px;
+    height: 30px;
+    width: 300px;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius:5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.exc-suc{
+    margin-top: 10px;
+}

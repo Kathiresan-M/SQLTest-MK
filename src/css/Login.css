@@ -1,0 +1,143 @@
+
+  .maincontainer {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../assets/login.jpg);
+    background-size: cover;
+  }
+  .loginpage {
+    border: 1px solid rgba(245, 245, 245, 0.404);
+    border-radius: 10px;
+    height: 350px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+  }
+  .registerpage {
+    border: 1px solid rgba(245, 245, 245, 0.404);
+    border-radius: 10px;
+    height: 560px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+  }
+  .logo {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 20px;
+    font-size: 35px;
+    font-weight: 300;
+    color: aliceblue;
+  }
+  .name {
+    padding: 10px;
+    margin: 10px;
+    width: 250px;
+    border-radius: 50px;
+    border: 2px solid rgba(253, 251, 251, 0.658);
+    color: rgb(255, 255, 255);
+  
+    background: none;
+  }
+  .pass {
+    padding: 10px;
+    margin: 10px;
+    width: 250px;
+    border-radius: 50px;
+    border: 2px solid rgba(253, 251, 251, 0.658);
+    color: rgb(255, 255, 255);
+  
+    background: none;
+  }
+  /* -ms- */
+  ::-ms-input-placeholder {
+    color: rgb(165, 240, 240);
+  }
+  ::placeholder {
+    color: rgb(163, 223, 220);
+  }
+  .text {
+    display: flex;
+    margin-top: 10px;
+  }
+  p {
+    color: rgb(255, 255, 255);
+    margin-right: 20px;
+  }
+  .a1 {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    margin-left: 20px;
+  }
+  .checkbox {
+    margin: 3px;
+  }
+  .hoverbtn {
+    margin-top: 20px;
+    padding: 4px;
+    width: 280px;
+    border-radius: 100px;
+    font-size: 20px;
+    border: none;
+    background-color: gray;
+  }
+  .hoverbtn:hover {
+    background-color: rgb(216, 255, 255);
+  }
+  .register {
+    margin-top: 10px;
+    color: white;
+  }
+  .a2 {
+    color: aliceblue;
+    text-decoration: none;
+  }
+  .otp-box{
+    display: flex;
+    align-items: center;
+  }
+  .otp{
+    padding: 10px;
+    margin: 10px;
+    width: 150px;
+    border-radius: 50px;
+    border: 2px solid rgba(253, 251, 251, 0.658);
+    color: rgb(255, 255, 255);
+    background: none;
+  }
+.verify-btn{
+    margin: 0;
+    padding: 4px 0px;
+    width: 100px;
+    border-radius: 7px;
+    font-size: 20px;
+    border: none;
+    background-color: gray;
+}
+.fill-details{
+  background-color: rgb(50, 247, 172);
+  width: 200px;
+  padding: 5px;
+  text-align: center;
+  color: black;
+  font-family:monospace;
+  border-radius: 7px;
+}
+.loading-wait{
+  background-color: white;
+  width: 200px;
+  padding: 5px;
+  text-align: center;
+  border-radius: 5px;
+  margin-top: 10px;
+}
