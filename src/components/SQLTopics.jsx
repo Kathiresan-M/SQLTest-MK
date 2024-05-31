@@ -174,6 +174,7 @@ export const SQLTopics = ({userDetails}) => {
                         </li>
                     </ul>
                 </div>
+             <div className="clear-both"></div>
             </div>
         </div>
     </div>
