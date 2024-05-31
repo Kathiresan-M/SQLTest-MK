@@ -259,6 +259,15 @@
     .sqltopics-container{
         width: 95%;
     }
+    .Hline{
+        display: none;
+    }
+    .sqltopics-left{
+        width: none;
+    }
+    .sqltopics-right{
+        width: 100%;
+    }
     .sqltopics-right ul{
         width: 100%;
     }
