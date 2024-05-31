@@ -397,3 +397,71 @@
         padding-bottom: 480px;
     }   
 }
+@media (max-width:320px) {
+    .round-1{
+        margin-top: 35px;
+        border: 5px solid #41516C;
+    }   
+    .round-2{
+        margin-top: 740px;
+        border: 5px solid #FBCA3E;
+    }
+    .round-3{
+        margin-top: 1240px;
+        border: 5px solid #E24A68;
+    }
+    .round-4{
+        margin-top: 578px;
+        border: 5px solid #1B5F8C;
+    }
+    .round-5{
+        margin-top: 730px;
+        border: 5px solid #030203;
+    }
+    .round-6{
+        margin-top: 885px;
+        border: 5px solid #1CE889;
+    }
+    .round-7{
+        margin-top: 630px;
+        border: 5px solid #660742;
+    }
+    .round-8{
+        margin-top: 625px;
+        border: 5px solid #ACB806;
+    }
+    .round-9{
+        margin-top: 587px;
+        border: 5px solid #86CC04;
+    }
+    .round-10{
+        margin-top: 815px;
+        border: 5px solid #4CADAD;
+    }
+    .round-11{
+        margin-top: 735px;
+        border: 5px solid #04B5CC;
+    }
+    .round-12{
+        margin-top: 750px;
+        border: 5px solid #0E04CC;
+    }
+    .round-13{
+        margin-top: 745px;
+        border: 5px solid #201F3D;
+    }
+    .round-14{
+        margin-top: 610px;
+        border: 5px solid #916527;
+    }
+    .round-15{
+        margin-top: 855px;
+        border: 5px solid #377D24;
+    }
+    .sqltopics-box{
+        height: 10700px;
+    }
+    .Hline{
+        padding-bottom: 640px;
+    }   
+}
