@@ -244,3 +244,129 @@
 .exc-suc{
     margin-top: 10px;
 }
+
+/* Media Query for CSS 425px */
+@media (max-width:425px) {
+    .sqltest-left{
+        float:none;
+        width: 100%;
+        padding-bottom:0;
+    }
+    .sqltest-right{
+        float:none;
+        width: 100%;
+    }
+    .question-table th,.question-table td{
+        border: 1px solid;
+        font-size: 10px;
+        padding: 2px;
+    }
+    .question-con p{
+        margin-top: 10px;
+        margin-right: 0px;
+        width: 100%;
+        font-size: 12px;
+        font-family: monospace;
+    }
+    .mainTitle{
+        font-size: 25px;
+    }
+    .userwel{
+        height: 80px;
+        padding: 5px;
+    }
+    .userwel h2{
+        font-size: 20px;
+    }
+    .userwel h3{
+        font-size: 15px;
+        margin-top: 2px;
+        margin-bottom: 7px;
+    }
+    .username-left{
+        width:80px;
+        border-radius: 4px;
+        padding: 2px;
+        font-size: 10px;
+    }
+    .username-right{
+        width:90px;
+        border-radius: 4px;
+        padding: 2px;
+        font-size: 10px;
+    }
+    .question-con h5{
+        margin-top: 10px;
+        font-size: 13px;
+    }
+    .question-table{
+        margin-top: 5px;
+    }
+    .expected-btn{
+        margin-top: 10px;
+        border: none;
+        outline: none;
+        border-radius: 3px;
+        padding: 5px;
+        font-size: 10px;
+    }
+    .enter-query{
+        font-size: 12px;
+        margin-top: 0px;
+    }
+    .expected-table{
+        margin-top:0;
+    }
+    .expected-table th,.expected-table td{
+        border: 1px solid;
+        font-size: 10px;
+        padding: 2px;
+    }
+    .output-table-div{
+        width: 100%;
+        height: 200px;
+        overflow: auto;
+        margin-top: 10px;
+    }
+    .query-input{
+        padding: 5px;
+        font-size: 12px;
+        height: 60px;
+    }
+    .execute-query{
+        margin-top: 10px;
+        font-size: 10px;
+    }
+    .submit-query{
+        margin-top: 10px;
+        font-size: 10px;
+    }
+    .exc-suc{
+        font-size: 13px;
+    }
+    .output-table{
+        margin-top: 0;
+        font-size: 10px;
+        padding: 2px;
+    }
+    .correct-ans{
+        height: 20px;
+        width: 120px;
+        font-size: 12px;
+        border-radius:3px;
+    }
+    .wrong-ans{
+        height: 20px;
+        width: 120px;
+        font-size: 12px;
+        border-radius:3px;
+    }
+    .previous-btn{
+        margin-top: 10px;
+        font-size: 10px;
+    }
+    .next-btn{
+        margin-top: 10px;
+        font-size: 10px;
+    }
+}
