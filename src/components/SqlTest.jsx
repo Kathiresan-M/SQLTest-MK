@@ -39,7 +39,7 @@ const QuestionSet = ({ count, data1, var1, var2,showExpected,setShowExpected }) 
                     </div>
                 ))
             }
-            <button onClick={() => setShowExpected(!showExpected)} className='expected-btn'>Hide/Show Expected Output</button>
+            <button onClick={() => setShowExpected(!showExpected)} className='expected-btn'>{showExpected ? 'Hide' : 'Show'} Expected Output</button>
             {showExpected &&
                 <div className="output-table-div">
                     <table className='expected-table'>
@@ -110,7 +110,7 @@ const ExecuteQuery = ({data1,var1,var2,count,inputData,setInputData,showOutput,s
             console.log(ansCorrect);
                     if(ansCorrect){
                         try {
-                            const response = await axios.get('https://sqlserver-mk.onrender.com/question-status', {
+                            const response = await axios.get('http://localhost:5000/question-status', {
                                 params: {
                                     gmail:emailId,
                                     questions:data1[var1][var2][count].Question
@@ -121,7 +121,7 @@ const ExecuteQuery = ({data1,var1,var2,count,inputData,setInputData,showOutput,s
                                 const questionIn = response.data;
                                 if(questionIn){
                                     try {
-                                        const response = await axios.get('https://sqlserver-mk.onrender.com/questions-add', {
+                                        const response = await axios.get('http://localhost:5000/questions-add', {
                                             params: {
                                                 gmail:emailId,
                                                 questions:data1[var1][var2][count].Question
@@ -162,7 +162,7 @@ const ExecuteQuery = ({data1,var1,var2,count,inputData,setInputData,showOutput,s
         e.preventDefault();
         if(inputData !== ''){
             try {
-                const response = await axios.get('https://sqlserver-mk.onrender.com/execute-query', {
+                const response = await axios.get('http://localhost:5000/execute-query', {
                     params: {
                         sql: inputData
                     }
@@ -277,7 +277,7 @@ export const SqlTest = () => {
         setquestionExist(false);
         setShowExpected(false);
         setErrorQuery(false);
-        setIndexOfQuestion((indexOfQuestion < (data1[0][0].length - 1)) ? (indexOfQuestion + 1) : indexOfQuestion)
+        setIndexOfQuestion((indexOfQuestion < (data1[var1][var2].length - 1)) ? (indexOfQuestion + 1) : indexOfQuestion)
     }
     const handlePreviousBtn = () => {
         if(inputData !== ''){
