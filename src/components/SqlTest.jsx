@@ -110,7 +110,7 @@ const ExecuteQuery = ({data1,var1,var2,count,inputData,setInputData,showOutput,s
             console.log(ansCorrect);
                     if(ansCorrect){
                         try {
-                            const response = await axios.get('http://localhost:5000/question-status', {
+                            const response = await axios.get('https://sqlserver-mk.onrender.com/question-status', {
                                 params: {
                                     gmail:emailId,
                                     questions:data1[var1][var2][count].Question
@@ -121,7 +121,7 @@ const ExecuteQuery = ({data1,var1,var2,count,inputData,setInputData,showOutput,s
                                 const questionIn = response.data;
                                 if(questionIn){
                                     try {
-                                        const response = await axios.get('http://localhost:5000/questions-add', {
+                                        const response = await axios.get('https://sqlserver-mk.onrender.com/questions-add', {
                                             params: {
                                                 gmail:emailId,
                                                 questions:data1[var1][var2][count].Question
@@ -162,7 +162,7 @@ const ExecuteQuery = ({data1,var1,var2,count,inputData,setInputData,showOutput,s
         e.preventDefault();
         if(inputData !== ''){
             try {
-                const response = await axios.get('http://localhost:5000/execute-query', {
+                const response = await axios.get('https://sqlserver-mk.onrender.com/execute-query', {
                     params: {
                         sql: inputData
                     }
