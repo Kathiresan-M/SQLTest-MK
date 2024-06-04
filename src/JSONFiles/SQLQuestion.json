@@ -859,6 +859,134 @@
                     ]
                 }]
             }                                                                                   
+        ],
+        [
+            {
+                "Question": "Retrieve the employee ID, first name, last name, and salary of employees in department 5 whose salary is not greater than $5000. Arrange the results by salary in ascending order.",
+                "Answer": [ [ "employee_id", "first_name", "last_name", "salary" ], [ 126, "Irene", "Mikkilineni", 2700 ], [ 193, "Britney", "Everett", 3900 ], [ 192, "Sarah", "Bell", 4000 ] ],
+                "Table_Ques": [{
+                    "Table_Title": "Employees",
+                    "Rows": [["employee_id", "INT", "Employee ID"],
+                        ["first_name", "VARCHAR(20)", "First name"],
+                        ["last_name", "VARCHAR(25)", "Last name"],
+                        ["email", "VARCHAR(100)", "Email"],
+                        ["phone_number", "VARCHAR(20)", "Phone number"],
+                        ["hire_date", "DATE", "Date of hiring"],
+                        ["job_id", "INT", "ID of the job"],
+                        ["salary", "DECIMAL(8, 2)", "Salary"],
+                        ["manager_id", "INT", "ID of the manager"],
+                        ["department_id", "INT", "ID of the department"]
+                    ]
+                }]
+            },
+            {
+                "Question": "Retrieve the employee ID, first name, last name, and department ID of employees who do not belong to departments with IDs 1, 2, or 3. Arrange the results by first name.",
+                "Answer": [ [ "employee_id", "first_name", "last_name", "department_id" ], [ 121, "Adam", "Fripp", 5 ], [ 103, "Alexander", "Hunold", 6 ], [ 193, "Britney", "Everett", 5 ], [ 104, "Bruce", "Ernst", 6 ], [ 179, "Charles", "Johnson", 8 ], [ 109, "Daniel", "Faviet", 10 ], [ 105, "David", "Austin", 6 ], [ 107, "Diana", "Lorentz", 6 ], [ 204, "Hermann", "Baer", 7 ], [ 126, "Irene", "Mikkilineni", 5 ], [ 111, "Ismael", "Sciarra", 10 ], [ 177, "Jack", "Livingston", 8 ], [ 110, "John", "Chen", 10 ], [ 145, "John", "Russell", 8 ], [ 176, "Jonathon", "Taylor", 8 ], [ 112, "Jose Manuel", "Urman", 10 ], [ 146, "Karen", "Partners", 8 ], [ 178, "Kimberely", "Grant", 8 ], [ 102, "Lex", "De Haan", 9 ], [ 113, "Luis", "Popp", 10 ], [ 120, "Matthew", "Weiss", 5 ], [ 108, "Nancy", "Greenberg", 10 ], [ 101, "Neena", "Kochhar", 9 ], [ 122, "Payam", "Kaufling", 5 ], [ 192, "Sarah", "Bell", 5 ], [ 123, "Shanta", "Vollman", 5 ], [ 205, "Shelley", "Higgins", 11 ], [ 100, "Steven", "King", 9 ], [ 203, "Susan", "Mavris", 4 ], [ 106, "Valli", "Pataballa", 6 ], [ 206, "William", "Gietz", 11 ] ],
+                "Table_Ques": [{
+                    "Table_Title": "Employees",
+                    "Rows": [["employee_id", "INT", "Employee ID"],
+                        ["first_name", "VARCHAR(20)", "First name"],
+                        ["last_name", "VARCHAR(25)", "Last name"],
+                        ["email", "VARCHAR(100)", "Email"],
+                        ["phone_number", "VARCHAR(20)", "Phone number"],
+                        ["hire_date", "DATE", "Date of hiring"],
+                        ["job_id", "INT", "ID of the job"],
+                        ["salary", "DECIMAL(8, 2)", "Salary"],
+                        ["manager_id", "INT", "ID of the manager"],
+                        ["department_id", "INT", "ID of the department"]
+                    ]
+                }]
+            },
+            {
+                "Question": "List the first name and last name of employees whose first name does not start with 'D', ordered by first name.",
+                "Answer": [ [ "first_name", "last_name" ], [ "Adam", "Fripp" ], [ "Alexander", "Hunold" ], [ "Alexander", "Khoo" ], [ "Britney", "Everett" ], [ "Bruce", "Ernst" ], [ "Charles", "Johnson" ], [ "Guy", "Himuro" ], [ "Hermann", "Baer" ], [ "Irene", "Mikkilineni" ], [ "Ismael", "Sciarra" ], [ "Jack", "Livingston" ], [ "Jennifer", "Whalen" ], [ "John", "Chen" ], [ "John", "Russell" ], [ "Jonathon", "Taylor" ], [ "Jose Manuel", "Urman" ], [ "Karen", "Colmenares" ], [ "Karen", "Partners" ], [ "Kimberely", "Grant" ], [ "Lex", "De Haan" ], [ "Luis", "Popp" ], [ "Matthew", "Weiss" ], [ "Michael", "Hartstein" ], [ "Nancy", "Greenberg" ], [ "Neena", "Kochhar" ], [ "Pat", "Fay" ], [ "Payam", "Kaufling" ], [ "Sarah", "Bell" ], [ "Shanta", "Vollman" ], [ "Shelley", "Higgins" ], [ "Shelli", "Baida" ], [ "Sigal", "Tobias" ], [ "Steven", "King" ], [ "Susan", "Mavris" ], [ "Valli", "Pataballa" ], [ "William", "Gietz" ] ],
+                "Table_Ques": [{
+                    "Table_Title": "Employees",
+                    "Rows": [["employee_id", "INT", "Employee ID"],
+                        ["first_name", "VARCHAR(20)", "First name"],
+                        ["last_name", "VARCHAR(25)", "Last name"],
+                        ["email", "VARCHAR(100)", "Email"],
+                        ["phone_number", "VARCHAR(20)", "Phone number"],
+                        ["hire_date", "DATE", "Date of hiring"],
+                        ["job_id", "INT", "ID of the job"],
+                        ["salary", "DECIMAL(8, 2)", "Salary"],
+                        ["manager_id", "INT", "ID of the manager"],
+                        ["department_id", "INT", "ID of the department"]
+                    ]
+                }]
+            },
+            {
+                "Question": "Retrieve the employee ID, first name, last name, and salary of employees whose salary is not between $3000 and $5000, ordered by salary.",
+                "Answer": [ [ "employee_id", "first_name", "last_name", "salary" ], [ 119, "Karen", "Colmenares", 2500 ], [ 118, "Guy", "Himuro", 2600 ], [ 126, "Irene", "Mikkilineni", 2700 ], [ 117, "Sigal", "Tobias", 2800 ], [ 116, "Shelli", "Baida", 2900 ], [ 104, "Bruce", "Ernst", 6000 ], [ 202, "Pat", "Fay", 6000 ], [ 179, "Charles", "Johnson", 6200 ], [ 123, "Shanta", "Vollman", 6500 ], [ 203, "Susan", "Mavris", 6500 ], [ 113, "Luis", "Popp", 6900 ], [ 178, "Kimberely", "Grant", 7000 ], [ 111, "Ismael", "Sciarra", 7700 ], [ 112, "Jose Manuel", "Urman", 7800 ], [ 122, "Payam", "Kaufling", 7900 ], [ 120, "Matthew", "Weiss", 8000 ], [ 110, "John", "Chen", 8200 ], [ 121, "Adam", "Fripp", 8200 ], [ 206, "William", "Gietz", 8300 ], [ 177, "Jack", "Livingston", 8400 ], [ 176, "Jonathon", "Taylor", 8600 ], [ 103, "Alexander", "Hunold", 9000 ], [ 109, "Daniel", "Faviet", 9000 ], [ 204, "Hermann", "Baer", 10000 ], [ 114, "Den", "Raphaely", 11000 ], [ 108, "Nancy", "Greenberg", 12000 ], [ 205, "Shelley", "Higgins", 12000 ], [ 201, "Michael", "Hartstein", 13000 ], [ 146, "Karen", "Partners", 13500 ], [ 145, "John", "Russell", 14000 ], [ 101, "Neena", "Kochhar", 17000 ], [ 102, "Lex", "De Haan", 17000 ], [ 100, "Steven", "King", 24000 ] ],
+                "Table_Ques": [{
+                    "Table_Title": "Employees",
+                    "Rows": [["employee_id", "INT", "Employee ID"],
+                        ["first_name", "VARCHAR(20)", "First name"],
+                        ["last_name", "VARCHAR(25)", "Last name"],
+                        ["email", "VARCHAR(100)", "Email"],
+                        ["phone_number", "VARCHAR(20)", "Phone number"],
+                        ["hire_date", "DATE", "Date of hiring"],
+                        ["job_id", "INT", "ID of the job"],
+                        ["salary", "DECIMAL(8, 2)", "Salary"],
+                        ["manager_id", "INT", "ID of the manager"],
+                        ["department_id", "INT", "ID of the department"]
+                    ]
+                }]
+            },
+            {
+                "Question": "Retrieve the employee IDs, first names, and last names of employees who either don't belong to departments 1, 2, or 3 and have a salary between $3000 and $6000, or whose first name starts with 'A' and ends with 'n'. Order the results by department ID in ascending order and limit the output to the top 20 employees.",
+                "Answer": [ [ "employee_id", "first_name", "last_name" ], [ 192, "Sarah", "Bell" ], [ 193, "Britney", "Everett" ], [ 104, "Bruce", "Ernst" ], [ 105, "David", "Austin" ], [ 106, "Valli", "Pataballa" ], [ 107, "Diana", "Lorentz" ] ],
+                "Table_Ques": [{
+                    "Table_Title": "Employees",
+                    "Rows": [["employee_id", "INT", "Employee ID"],
+                        ["first_name", "VARCHAR(20)", "First name"],
+                        ["last_name", "VARCHAR(25)", "Last name"],
+                        ["email", "VARCHAR(100)", "Email"],
+                        ["phone_number", "VARCHAR(20)", "Phone number"],
+                        ["hire_date", "DATE", "Date of hiring"],
+                        ["job_id", "INT", "ID of the job"],
+                        ["salary", "DECIMAL(8, 2)", "Salary"],
+                        ["manager_id", "INT", "ID of the manager"],
+                        ["department_id", "INT", "ID of the department"]
+                    ]
+                }]
+            },
+            {
+                "Question": "Retrieve the employee IDs, first names, last names, and phone numbers of employees whose phone numbers are not specified.",
+                "Answer": [ [ "employee_id", "first_name", "last_name", "phone_number" ], [ 145, "John", "Russell", null ], [ 146, "Karen", "Partners", null ], [ 176, "Jonathon", "Taylor", null ], [ 177, "Jack", "Livingston", null ], [ 178, "Kimberely", "Grant", null ], [ 179, "Charles", "Johnson", null ] ],
+                "Table_Ques": [{
+                    "Table_Title": "Employees",
+                    "Rows": [["employee_id", "INT", "Employee ID"],
+                        ["first_name", "VARCHAR(20)", "First name"],
+                        ["last_name", "VARCHAR(25)", "Last name"],
+                        ["email", "VARCHAR(100)", "Email"],
+                        ["phone_number", "VARCHAR(20)", "Phone number"],
+                        ["hire_date", "DATE", "Date of hiring"],
+                        ["job_id", "INT", "ID of the job"],
+                        ["salary", "DECIMAL(8, 2)", "Salary"],
+                        ["manager_id", "INT", "ID of the manager"],
+                        ["department_id", "INT", "ID of the department"]
+                    ]
+                }]
+            },
+            {
+                "Question": "Retrieve the employee IDs, first names, last names, and phone numbers of employees whose phone numbers are specified.",
+                "Answer": [ [ "employee_id", "first_name", "last_name", "phone_number" ], [ 100, "Steven", "King", "515.123.4567" ], [ 101, "Neena", "Kochhar", "515.123.4568" ], [ 102, "Lex", "De Haan", "515.123.4569" ], [ 103, "Alexander", "Hunold", "590.423.4567" ], [ 104, "Bruce", "Ernst", "590.423.4568" ], [ 105, "David", "Austin", "590.423.4569" ], [ 106, "Valli", "Pataballa", "590.423.4560" ], [ 107, "Diana", "Lorentz", "590.423.5567" ], [ 108, "Nancy", "Greenberg", "515.124.4569" ], [ 109, "Daniel", "Faviet", "515.124.4169" ], [ 110, "John", "Chen", "515.124.4269" ], [ 111, "Ismael", "Sciarra", "515.124.4369" ], [ 112, "Jose Manuel", "Urman", "515.124.4469" ], [ 113, "Luis", "Popp", "515.124.4567" ], [ 114, "Den", "Raphaely", "515.127.4561" ], [ 115, "Alexander", "Khoo", "515.127.4562" ], [ 116, "Shelli", "Baida", "515.127.4563" ], [ 117, "Sigal", "Tobias", "515.127.4564" ], [ 118, "Guy", "Himuro", "515.127.4565" ], [ 119, "Karen", "Colmenares", "515.127.4566" ], [ 120, "Matthew", "Weiss", "650.123.1234" ], [ 121, "Adam", "Fripp", "650.123.2234" ], [ 122, "Payam", "Kaufling", "650.123.3234" ], [ 123, "Shanta", "Vollman", "650.123.4234" ], [ 126, "Irene", "Mikkilineni", "650.124.1224" ], [ 192, "Sarah", "Bell", "650.501.1876" ], [ 193, "Britney", "Everett", "650.501.2876" ], [ 200, "Jennifer", "Whalen", "515.123.4444" ], [ 201, "Michael", "Hartstein", "515.123.5555" ], [ 202, "Pat", "Fay", "603.123.6666" ], [ 203, "Susan", "Mavris", "515.123.7777" ], [ 204, "Hermann", "Baer", "515.123.8888" ], [ 205, "Shelley", "Higgins", "515.123.8080" ], [ 206, "William", "Gietz", "515.123.8181" ] ],
+                "Table_Ques": [{
+                    "Table_Title": "Employees",
+                    "Rows": [["employee_id", "INT", "Employee ID"],
+                        ["first_name", "VARCHAR(20)", "First name"],
+                        ["last_name", "VARCHAR(25)", "Last name"],
+                        ["email", "VARCHAR(100)", "Email"],
+                        ["phone_number", "VARCHAR(20)", "Phone number"],
+                        ["hire_date", "DATE", "Date of hiring"],
+                        ["job_id", "INT", "ID of the job"],
+                        ["salary", "DECIMAL(8, 2)", "Salary"],
+                        ["manager_id", "INT", "ID of the manager"],
+                        ["department_id", "INT", "ID of the department"]
+                    ]
+                }]
+            }                                                                                   
         ]      
     ],
     [
