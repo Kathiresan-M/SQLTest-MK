@@ -11,7 +11,8 @@ export const SQLTopics = ({userDetails}) => {
     const [emailId,setEmailId] = useState(loginIs[1]);
     const [profileName,setProfileName] = useState(loginIs[2]);
     const [markScore,setMarkScore] = useState(Number(loginIs[3]));
-
+    const navigate = useNavigate();
+ 
     useEffect(() => {
 
     },[navigate])
