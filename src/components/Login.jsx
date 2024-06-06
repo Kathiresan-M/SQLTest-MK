@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {Link} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 import '../css/Login.css'
 import { SQLTopics } from './SQLTopics';
 
@@ -11,7 +12,8 @@ export const Login = () => {
   const [email,setEmail] = useState(null);
   const [moveTopics,setMoveTopics] = useState(false);
 
-
+  const navigate = useNavigate();
+  
   const handleLoginBtn = async(e) => {
     e.preventDefault();
     if(!email || !password) {
@@ -30,6 +32,7 @@ export const Login = () => {
           setValidUser(uservalid);
           window.localStorage.setItem("isLoggedIn",true);
           window.localStorage.setItem("isLoggedDetails",JSON.stringify(uservalid));
+          navigate('/');
           console.log(uservalid);
           setMoveTopics(true);
         }
