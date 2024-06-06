@@ -66,8 +66,8 @@ export const Login = () => {
           </div> */}
           <div className="button"><button className='hoverbtn' onClick={handleLoginBtn}>Login</button></div>
           {/* <Link to={{pathname:"/SQLTopics"} }>Login</Link> */}
-          <div className="register">
-            don't have account? <Link to={{pathname:"/Register"} }>register</Link>
+          <div className="register" onClick={() => navigate("/Registeration")}>
+            don't have account? register
             {/* <a href="register.html" className="a2"></a> */}
           </div>
         </div>
