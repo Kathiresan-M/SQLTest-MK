@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {Link} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import '../css/Login.css'
 import { ShowDiv } from './ShowDiv';
 import { SQLTopics } from './SQLTopics';
@@ -22,6 +23,7 @@ export const Register = () => {
   const [moveTopics,setMoveTopics] = useState(false);
   const [userExists,setUserExists] = useState(false);
   const RegisterDetails = [username,password,phoneNumber,email,college,passedOutYear];
+  const navigate = useNavigate();
 
   const handleRegisterBtn = async () => {
     if(!username || !password || !phoneNumber || !email || !college || !passedOutYear) {
@@ -81,8 +83,8 @@ export const Register = () => {
           </div> */}
           
           {!loading && <div className="button"><button className='hoverbtn' onClick={handleRegisterBtn}>Register</button></div>}
-          <div className="register">
-            I have a account?<Link to={{pathname:"/"}}>Login</Link>
+          <div className="register" onClick={() => navigate("/Login")}>
+            I have a account? Login
           </div>
       </div>
         <ShowDiv show={showPopup} startTimer={startTimer} RegisterDetails={RegisterDetails} setMoveTopics={setMoveTopics} setUserDetails={setUserDetails}/> 
