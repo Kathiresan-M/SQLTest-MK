@@ -22,6 +22,7 @@ function App() {
               <Route path='/' element={isLogin ? <SQLTopics /> : <Login />} />
               <Route path='/Login' element={<Login />} />
               <Route path='/Register' element={isLogin ? <SQLTopics /> : <Register />} />
+              <Route path='/Registeration' element={<Register />} />
               <Route path='/SQLTopics' element={<SQLTopics />} />
               <Route path='/SqlTest' element={<SqlTest />} />
             </Routes>
