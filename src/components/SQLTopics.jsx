@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../css/SQLTopics.css'
 import {Link} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 import profileimg from '../assets/profile.png'
  
 export const SQLTopics = ({userDetails}) => {
@@ -16,9 +17,15 @@ export const SQLTopics = ({userDetails}) => {
     },[])
     // console.log(loggedIn);
 
+   const handleLogoutBtn = () => {
+        window.localStorage.clear();
+        navigate('/Login');
+    }
+
   return(
     <div className='sqltopics-main-container'>
         <div className='usernameSQL1'><h3>Your Score : {markScore}</h3></div>
+        <button className='logout-btn' onClick={handleLogoutBtn}>Logout</button>
         <div className='usernameSQL'><img src={profileimg} alt="" /><h3>{profileName}</h3></div>
         <div className="sqltopics-container">
             <h1>SQL</h1>
