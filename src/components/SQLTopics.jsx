@@ -14,7 +14,7 @@ export const SQLTopics = ({userDetails}) => {
 
     useEffect(() => {
 
-    },[])
+    },[navigate])
     // console.log(loggedIn);
 
    const handleLogoutBtn = () => {
