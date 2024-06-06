@@ -1,6 +1,7 @@
 import React, { useEffect,useState } from 'react'
 import '../css/Popup.css'
 import {Link} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
 export const ShowDiv = ({show,RegisterDetails,setMoveTopics,setUserDetails}) => {
   const [timeLeft, setTimeLeft] = useState(300); // 300 seconds = 5 minutes
@@ -10,6 +11,7 @@ export const ShowDiv = ({show,RegisterDetails,setMoveTopics,setUserDetails}) => 
   const [inputOtp,setInputOtp] = useState();
   const [validOtp,setValidOtp] = useState(false);
   const [validStatus,setValidStatus] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (timeLeft === 0) {
@@ -44,6 +46,7 @@ export const ShowDiv = ({show,RegisterDetails,setMoveTopics,setUserDetails}) => 
           setUserDetails(uservalid);
           window.localStorage.setItem("isLoggedIn",true);
           window.localStorage.setItem("isLoggedDetails",JSON.stringify(uservalid));
+          navigate("/Register");
           console.log(uservalid);
           setMoveTopics(true);
         }
@@ -77,6 +80,7 @@ export const ShowDiv = ({show,RegisterDetails,setMoveTopics,setUserDetails}) => 
         <div className="inner-div">
         <h3>OTP Verification</h3>
         <input type="text" onChange={(e) => setInputOtp(e.target.value)} className='popup-input'/>
+          <p>OTP was send to Your Email</p>
         {validStatus && (validOtp ? <p>OTP is Valid</p> : <p>OTP is Invalid</p>)}
         </div>
         <div className="btns">
