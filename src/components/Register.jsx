@@ -1,19 +1,22 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import {Link} from 'react-router-dom'
 import {useNavigate} from 'react-router-dom'
 import '../css/Login.css'
-import { ShowDiv } from './ShowDiv';
-import { SQLTopics } from './SQLTopics';
+import axios from 'axios';
+import { cartContext } from '../App';
 
 
 
 export const Register = () => {
+
   const [username,setUsername] = useState(null);
   const [password,setPassword] = useState(null);
   const [phoneNumber,setPhoneNumber] = useState(null);
   const [email,setEmail] = useState(null);
   const [college,setCollege] = useState(null);
   const [passedOutYear,setPassedOutYear] = useState(null);
+  const [mark,setMark] = useState(0);
+  const [questionsAttend,setQuestionsAttend] = useState([]);
   const [otp,setOtp] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
   const [userDetails,setUserDetails] = useState();
@@ -22,37 +25,36 @@ export const Register = () => {
   const [startTimer, setStartTimer] = useState(false);
   const [moveTopics,setMoveTopics] = useState(false);
   const [userExists,setUserExists] = useState(false);
-  const RegisterDetails = [username,password,phoneNumber,email,college,passedOutYear];
+  const RegisterDetails = [username,password,phoneNumber,email,college,passedOutYear,questionsAttend];
   const navigate = useNavigate();
+  const {backendUrl} = useContext(cartContext);
 
-  const handleRegisterBtn = async () => {
+  const handleRegisterBtn = (e) => {
+    e.preventDefault()
+    setLoading(true);
     if(!username || !password || !phoneNumber || !email || !college || !passedOutYear) {
       setFillAllData(true);
+      setLoading(false);
     }else{
-      setFillAllData(false);
-      setLoading(true);
-      try {
-        const response = await fetch(`https://sqlserver-mk.onrender.com/check-user?gmail=${email}`);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const result = await response.json();
-        setLoading(false);
-        setStartTimer(true);
-        if(!result){
-          setUserExists(!userExists);
-        }
-        setShowPopup(result);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-        setError(error.message);
-      }
+      axios.post(`${backendUrl}register`,{email,username,password,phoneNumber,college,passedOutYear,mark})
+        .then(result => {
+          if(!result.data){
+            setUserExists(true);
+          }else{
+            console.log(result);
+          window.localStorage.setItem("isLoggedIn",true);
+          window.localStorage.setItem("isLoggedDetails",JSON.stringify(result.data));
+          navigate("/Home");
+          }
+          
+        })
+        .catch(err => console.log(err))
+      setLoading(false)
     }
   };
 
   return (
     <>
-    {moveTopics ? <SQLTopics userDetails={userDetails}/> : 
     <div className="maincontainer">
       <div className="registerpage">
           <div className="logo">REGISTER</div>
@@ -87,9 +89,8 @@ export const Register = () => {
             I have a account? Login
           </div>
       </div>
-        <ShowDiv show={showPopup} startTimer={startTimer} RegisterDetails={RegisterDetails} setMoveTopics={setMoveTopics} setUserDetails={setUserDetails}/> 
+        {/* <ShowDiv show={showPopup} startTimer={startTimer} RegisterDetails={RegisterDetails} setMoveTopics={setMoveTopics} setUserDetails={setUserDetails}/>  */}
     </div>
-  }
   </>
   );
 }

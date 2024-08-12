@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import {Link} from 'react-router-dom'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import '../css/Login.css'
-import { SQLTopics } from './SQLTopics';
+import { cartContext } from '../App';
+import axios from 'axios'
 
 export const Login = () => {
   const [validUser,setValidUser] = useState(true);
@@ -11,6 +11,7 @@ export const Login = () => {
   const [password,setPassword] = useState(null);
   const [email,setEmail] = useState(null);
   const [moveTopics,setMoveTopics] = useState(false);
+  const {backendUrl} = useContext(cartContext);
 
   const navigate = useNavigate();
   
@@ -20,22 +21,25 @@ export const Login = () => {
       setFillAllData(true);
     }else{
       try {
+        setFillAllData(false);
         setLoading(true);
-        const response = await fetch(`https://sqlserver-mk.onrender.com/user-login?gmail=${email}&password=${password}`);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const uservalid = await response.json();
-        if(!uservalid){
+        axios.post(`${backendUrl}login`,{email,password})
+        .then(result => {
+          setValidUser(result.data);
+          if(result.data){
+            setValidUser(true);
+            window.localStorage.setItem("isLoggedIn",true);
+            window.localStorage.setItem("isLoggedDetails",JSON.stringify(result.data));
+            navigate('/Home');
+            setMoveTopics(true);
+          }else{
+            setValidUser(false);
+          }
+        })
+        .catch(err => {
+          console.log(err)
           setValidUser(false);
-        }else{
-          setValidUser(uservalid);
-          window.localStorage.setItem("isLoggedIn",true);
-          window.localStorage.setItem("isLoggedDetails",JSON.stringify(uservalid));
-          navigate('/');
-          console.log(uservalid);
-          setMoveTopics(true);
-        }
+        })
         setLoading(false);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -46,7 +50,6 @@ export const Login = () => {
 
   return (
     <>
-    {moveTopics ? <SQLTopics userDetails={validUser}/> :
     <div className="maincontainer">
       <form action="">
         <div className="loginpage">
@@ -73,7 +76,6 @@ export const Login = () => {
         </div>
       </form>
     </div>
-    }
     </>
   )
 }

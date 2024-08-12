@@ -13,9 +13,8 @@ export const SQLTopics = ({userDetails}) => {
     const [markScore,setMarkScore] = useState(Number(loginIs[3]));
     const navigate = useNavigate();
  
-    useEffect(() => {
-
-    },[navigate])
+    // useEffect(() => {
+    // },[navigate])
     // console.log(loggedIn);
 
    const handleLogoutBtn = () => {
@@ -25,18 +24,18 @@ export const SQLTopics = ({userDetails}) => {
 
   return(
     <div className='sqltopics-main-container'>
-        <div className='usernameSQL1'><h3>Your Score : {markScore}</h3></div>
+        {/* <div className='usernameSQL1'><h3>Your Score : {markScore}</h3></div>
         <button className='logout-btn' onClick={handleLogoutBtn}>Logout</button>
-        <div className='usernameSQL'><img src={profileimg} alt="" /><h3>{profileName}</h3></div>
+        <div className='usernameSQL'><img src={profileimg} alt="" /><h3>{profileName}</h3></div> */}
         <div className="sqltopics-container">
             <h1>SQL</h1>
             <div className="sqltopics-box">
                 <div className="sqltopics-left">
-                    <div className="Hline">
+                    {/* <div className="Hline">
                         <div className="round round-1"></div>
                         <div className="round round-2"></div>
                         <div className="round round-3"></div>
-                        {/* <div className="round round-4"></div> */}
+                        <div className="round round-4"></div>
                         <div className="round round-4"></div>
                         <div className="round round-5"></div>
                         <div className="round round-6"></div>
@@ -48,7 +47,7 @@ export const SQLTopics = ({userDetails}) => {
                         <div className="round round-12"></div>
                         <div className="round round-13"></div>
                         <div className="round round-14"></div>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="sqltopics-right">
                     <ul>

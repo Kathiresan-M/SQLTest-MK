@@ -62,7 +62,7 @@ const QuestionSet = ({ count, data1, var1, var2,showExpected,setShowExpected }) 
     )
 }
 
-const ExecuteQuery = ({data1,var1,var2,count,inputData,setInputData,showOutput,setShowOutput,displayAnsNotification,setDisplayAnsNotification,queryExecuted,setQueryExecuted,questionExist,setquestionExist,emailId,markScore,setMarkScore,errorQuery,setErrorQuery }) => {
+const ExecuteQuery = ({backendUrl,data1,var1,var2,count,inputData,setInputData,showOutput,setShowOutput,displayAnsNotification,setDisplayAnsNotification,queryExecuted,setQueryExecuted,questionExist,setquestionExist,emailId,markScore,setMarkScore,errorQuery,setErrorQuery }) => {
     
     const [users, setusers] = useState(null);
     
@@ -90,7 +90,7 @@ const ExecuteQuery = ({data1,var1,var2,count,inputData,setInputData,showOutput,s
                 if (!list) return [];
                 return list.reduce((acc, val) => acc.concat(val || []), []);
             };
-            const areListsEqual = (list1, list2) => {
+            const areListsEqual = async(list1, list2) => {
                 const flatList1 = flattenList(list1);
                 const flatList2 = flattenList(list2);
                 if (flatList1.length !== flatList2.length){ 
@@ -98,63 +98,23 @@ const ExecuteQuery = ({data1,var1,var2,count,inputData,setInputData,showOutput,s
                 }
                 for (let i = 0; i < flatList1.length; i++) {                
                   if (flatList1[i] !== flatList2[i]){
-                    console.log(false);
-                    console.log(flatList1[i].toString());   
-                    console.log(flatList2[i].toString());
                      return false;
                   }
                 }
                 return true;
             };
-            setAnsCorrect(areListsEqual(users, list2));
-            console.log(ansCorrect);
-                    if(ansCorrect){
+            const checkTrue = await areListsEqual(users, list2);
+            setAnsCorrect(checkTrue);
+                    if(checkTrue){
                         try {
-                            const response = await axios.get('https://sqlserver-mk.onrender.com/question-status', {
-                                params: {
-                                    gmail:emailId,
-                                    questions:data1[var1][var2][count].Question
-                                }
-                            });
-                
-                            if (response.data) {
-                                const questionIn = response.data;
-                                if(questionIn){
-                                    try {
-                                        const response = await axios.get('https://sqlserver-mk.onrender.com/questions-add', {
-                                            params: {
-                                                gmail:emailId,
-                                                questions:data1[var1][var2][count].Question
-                                            }
-                                        });
-                            
-                                        if (response.data) {
-                                            const QuestionAdd = response.data;
-                                            if(QuestionAdd){
-                                                console.log(QuestionAdd[0]);
-                                                console.log(QuestionAdd[1]);
-                                                setMarkScore(QuestionAdd[1]);
-                                                setquestionExist(QuestionAdd[0]);
-                                            }
-                                        } else {
-                                            console.error('Error:', response.statusText);
-                                        }
-                                    } catch (error) {
-                                        console.error('Error:', error);
-                                    }                
-                                }else{
-                                    setquestionExist(false);
-                                }
-            
-                            } else {
-                                console.error('Error:', response.statusText);
-                            }
-                        } catch (error) {
+                            const question={"question":data1[var1][var2][count].Question};
+                            const response = await axios.post(`${backendUrl}add-question`, {emailId,question});
+                        }catch (error) {
                             console.error('Error:', error);
                         }
                     }
             setDisplayAnsNotification(!displayAnsNotification);
-            
+                  
         }
     };
 
@@ -162,7 +122,7 @@ const ExecuteQuery = ({data1,var1,var2,count,inputData,setInputData,showOutput,s
         e.preventDefault();
         if(inputData !== ''){
             try {
-                const response = await axios.get('https://sqlserver-mk.onrender.com/execute-query', {
+                const response = await axios.get(`${backendUrl}execute-query`, {
                     params: {
                         sql: inputData
                     }
@@ -170,7 +130,6 @@ const ExecuteQuery = ({data1,var1,var2,count,inputData,setInputData,showOutput,s
     
                 if (response.data[0]) {
                     const users1 = response.data[1];
-                    console.log('Success:',users1);
                     setErrorQuery(false);
                     setusers(users1);
                     if(users1){
@@ -180,7 +139,6 @@ const ExecuteQuery = ({data1,var1,var2,count,inputData,setInputData,showOutput,s
 
                 } else {
                     // console.error('Error:', response.statusText);
-                    console.log(response.data[1]);
                     setErrorQuery(true);
                     setusers(response.data[1]);
                     setShowOutput(false);
@@ -251,8 +209,13 @@ export const SqlTest = () => {
     const [queryExecuted,setQueryExecuted] = useState(false);
     const [questionExist,setquestionExist] = useState(false);
     const [errorQuery,setErrorQuery] = useState(false);
-    const data = () => useContext(cartContext);
-    const data1 = data();
+    const loginIs = JSON.parse(window.localStorage.getItem("isLoggedDetails"));
+    const [profileName,setProfileName] = useState(null);
+    const [emailId,setEmailId] = useState(loginIs.email);
+    // const data = () => useContext(cartContext);
+    // const data1 = data();
+    const {Data,backendUrl} = useContext(cartContext);
+    const data1 = Data;
 
     const { search } = useLocation();
 
@@ -262,9 +225,7 @@ export const SqlTest = () => {
     const var2 = parseInt(params.get('var2'));
     const var3 = params.get('var3');
     const var4 = params.get('var4');
-    const [markScore,setMarkScore ]= useState(Number(params.get('markScore')));
-    const profileName = params.get('profileName');
-    const emailId = params.get('emailId');
+    const [markScore,setMarkScore ]= useState(0);
 
     const handleNextBtn = () => {
         if(inputData !== ''){
@@ -292,6 +253,12 @@ export const SqlTest = () => {
         setErrorQuery(false);
         setIndexOfQuestion((0 !== indexOfQuestion) ? (indexOfQuestion - 1) : indexOfQuestion);
     }
+    useEffect(() => {
+        axios.post(`${backendUrl}update-curdetails`,{emailId}).then(result => {
+            setMarkScore(result.data.mark);
+            setProfileName(result.data.username);
+        });
+    },[handlePreviousBtn,handleNextBtn,ExecuteQuery]);
 
     return (
         <div className='sqltest-main-container'>
@@ -307,7 +274,7 @@ export const SqlTest = () => {
                         <QuestionSet count={indexOfQuestion} data1={data1} var1={var1} var2={var2} showExpected={showExpected} setShowExpected={setShowExpected} />
                     </div>
                     <div className="sqltest-right">
-                        <ExecuteQuery count={indexOfQuestion} data1={data1} var1={var1} var2={var2} inputData={inputData} setInputData={setInputData} showOutput={showOutput} setShowOutput={setShowOutput} displayAnsNotification={displayAnsNotification} setDisplayAnsNotification={setDisplayAnsNotification} queryExecuted={queryExecuted} setQueryExecuted={setQueryExecuted} questionExist={questionExist} setquestionExist={setquestionExist} emailId={emailId} markScore={markScore} setMarkScore={setMarkScore} errorQuery={errorQuery} setErrorQuery={setErrorQuery} />
+                        <ExecuteQuery backendUrl={backendUrl} count={indexOfQuestion} data1={data1} var1={var1} var2={var2} inputData={inputData} setInputData={setInputData} showOutput={showOutput} setShowOutput={setShowOutput} displayAnsNotification={displayAnsNotification} setDisplayAnsNotification={setDisplayAnsNotification} queryExecuted={queryExecuted} setQueryExecuted={setQueryExecuted} questionExist={questionExist} setquestionExist={setquestionExist} emailId={emailId} markScore={markScore} setMarkScore={setMarkScore} errorQuery={errorQuery} setErrorQuery={setErrorQuery} />
                         <div className="leftright1">
                             <button className='previous-btn' onClick={handlePreviousBtn}>Previous</button>
                             <button className='next-btn' onClick={handleNextBtn}>Next</button>
