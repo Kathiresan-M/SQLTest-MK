@@ -25,7 +25,7 @@
     text-align: center;
     background-color: cornsilk;
     color: black;
-    width: 150px;
+    width: 190px;
     float: left;
     border-radius: 7px;
     padding: 5px 10px;
@@ -64,6 +64,7 @@
 }
 .question-con p{
     margin-top: 20px;
+    color: black;
     width: 90%;
 }
 .question-con h5{

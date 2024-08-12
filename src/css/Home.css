@@ -1,0 +1,157 @@
+.HomePage{
+    background-color: #ebeae5;
+    height: 100vh;
+    width: 100vw;
+}
+.homeleft{
+    height: 100vh;
+    width: 20%;
+    background-color: rgb(82, 82, 253);
+    float: left;
+    display: flex;
+    flex-direction: column;
+}
+.homeright{
+    height: 100vh;
+    width: 80%;
+    float: right;
+}
+.homerighttop{
+    height: 70px;
+    width: 100%;
+    background-color: white;
+}
+.profilehome{
+    height: 50px;
+    width: 50px;
+    background-color: #eeeeeb;
+    float: right;
+    margin-right: 25px;
+    margin-top: 10px;
+    border-radius: 50%;
+}
+.profilehome img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+.pronamehome{
+    float: right;
+    margin:19px 20px;
+    color: white;
+    font-weight: bold;
+    font-size: large;
+    background-color: rgb(82, 82, 253) ;
+    padding:7px 10px;
+    border: black;
+    border-radius: 5px;
+}
+.searchhome{
+    width: 390px;
+    height: 44px;
+    background-color: rgb(82, 82, 253);
+    float: left;
+    margin: 12px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 5px;
+}
+.searchhome input{
+    width: 300px;
+    height: 44px;
+    background-color: white;
+    border-radius: 5px 0px 0px 5px;
+    outline: none;
+    padding: 10px;
+    font-size: large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.searchhome button:hover{
+    background-color: rgb(0, 0, 255);
+    cursor: pointer;
+}
+.srcBtn{
+    background-color: rgb(82, 82, 253);
+    color: white;
+    font-size: large;
+    height: 40px;
+    border: none;
+    width: 88px;
+    border-radius:0px 5px 5px 0px;
+}
+.homeSQL{
+    font-size: 45px;
+    font-weight: bolder;
+    width: 80%;
+    margin:20px auto;
+    padding: 10px;
+    color: white;
+}
+.Dashboardbtn{
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bolder;
+    width: 100%;
+    margin:20px auto 0px auto;
+    padding: 5px;
+    color: white;
+    border-top: 1PX solid;
+    border-bottom: 1px solid;
+}
+.SQLTopicsBtn,.ProfileBtn{
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bolder;
+    width: 100%;
+    margin:0px auto;
+    padding: 5px;
+    color: white;
+    border-top: 1PX solid;
+    border-bottom: 1px solid;
+}
+.Dashboardbtn:hover{
+    opacity: 70%;
+    cursor: pointer;
+    background-color: blue;
+    color: white;
+}
+.SQLTopicsBtn:hover{
+    opacity: 70%;
+    cursor: pointer;
+    background-color: blue;
+    color: white;
+}
+.ProfileBtn:hover{
+    opacity: 70%;
+    cursor: pointer;
+    background-color: blue;
+    color: white;
+}
+.homerightcenter{
+    width: 100%;
+    height: auto;
+    overflow: auto;
+}
+.active-btn{
+    cursor: pointer;
+    background-color: #ebeae5;
+    color: black;
+}
+.logout-home-btn{
+    width: 100px;
+    margin: 230px auto 10px auto;
+    padding: 7px 20px;
+    font-size: large;
+    font-weight: bold;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+
+}
+.Logout-outBtn{
+    width: 150px;
+    margin-top: 20px;
+}

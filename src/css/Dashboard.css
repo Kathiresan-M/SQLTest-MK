@@ -1,0 +1,117 @@
+.dashboard-div{
+    width: 100%;
+}
+.dashboard-div h1{
+   color: rgb(68, 68, 68);
+   margin: 20px 20px;
+}
+.dashboard-content{
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    height: 400px;
+    margin: 0 auto;
+    padding: 10px;
+}
+.dashboard1{
+    height: 200px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.dashboard2{
+    height: 200px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.topics-compt{
+    height: 150px;
+    background-color: white;
+    width: 400px;
+    border-radius: 7px;
+    border-left: 6px solid rgb(33, 33, 255);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+.topics-compt h3{
+    color: rgb(33, 33, 255);
+}
+.topics-compt h3 span{
+    font-size: 25px;
+    color: rgb(33, 33, 255);
+}
+.topics-compt img{
+    height: 70px;
+    width: 70px;
+}
+.marks{
+    height: 150px;
+    background-color: white;
+    width: 400px;
+    border-radius: 7px;
+    border-left: 6px solid tomato;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+.marks h3{
+    color: tomato;
+}
+.marks h3 span{
+    font-size: 25px;
+    color: tomato;
+}
+.marks img{
+    height: 70px;
+    width: 70px;
+}
+.topics-incompt{
+    height: 150px;
+    background-color: white;
+    width: 400px;
+    border-radius: 7px;
+    border-left: 6px solid rgb(42, 194, 245);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+.topics-incompt h3{
+    color: rgb(42, 194, 245);
+}
+.topics-incompt h3 span{
+    font-size: 25px;
+    color: rgb(42, 194, 245);
+}
+.topics-incompt img{
+    height: 70px;
+    width: 70px;
+}
+.process{
+    height: 150px;
+    background-color: white;
+    width: 400px;
+    border-radius: 7px;
+    border-left: 6px solid orange;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+.process h3{
+    color: orange;
+}
+.process h3 span{
+    font-size: 25px;
+    color: orange;
+}
+.process img{
+    height: 70px;
+    width: 70px;
+}

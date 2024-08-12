@@ -1,0 +1,47 @@
+.profile-main{
+    width: 90%;
+    padding: 10px;
+}
+.pro-details{
+    margin-left: 30px;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid;
+    width: 200px;
+    font-family:Tahoma, sans-serif;
+    font-weight: bold;
+}
+.details input{
+    width: 400px;
+    padding: 7px;
+    border-radius: 5px;
+}
+.details h3{
+    font-weight: bold;
+    font-size: 20px;
+}
+.margin-bt10{
+   height: 120px;
+   margin-left: 10px;
+}
+.edit-btn{
+    background-color: blue;
+    padding: 5px 20px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    margin-top: 30px;
+    font-weight: bold;
+}
+.disabled {
+    width: 400px;
+    padding: 7px;
+    border-radius: 5px;
+    pointer-events: none; /* Prevents clicking */
+    outline: none;
+    color: black;
+    border: 1px solid #cfd2d6;
+    /* background-color: #e9ecef; */
+    cursor: not-allowed; /* Shows a not-allowed cursor on hover */
+}
+  
