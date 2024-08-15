@@ -20,9 +20,9 @@
 }
 .details input{
     margin-top: 10px;
-    width: 300px;
+    width: 400px;
     padding: 7px;
-    font-size: 13px;
+    font-size: 18px;
     border-radius: 5px;
 }
 .details h3{
@@ -57,5 +57,11 @@
   
 /* Mobile css 425 */
 @media (max-width:425px) {
-    
+    .details input{
+    margin-top: 10px;
+    width: 300px;
+    padding: 7px;
+    font-size: 15px;
+    border-radius: 5px;
+}
 }
