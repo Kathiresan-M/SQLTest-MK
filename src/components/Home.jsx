@@ -56,6 +56,10 @@ export const Home = () => {
             <div className={sqlTopicsValid ? "SQLTopicsBtn active-btn" : "SQLTopicsBtn"} onClick={handleSQLTopicsBtn}>SQL Topics</div>
             <div className={profileValid ? "ProfileBtn active-btn" : "ProfileBtn"} onClick={handleProfileBtn}>Profile</div>
             <button className='logout-home-btn' onClick={HandleHomeLogoutBtn}>Logout</button>
+            <div className='align-end'>
+                <div className="mb-profilehome"><img src={profileicon} alt="" /></div>
+                <div className="mb-pronamehome">{profileName}</div>
+            </div>
         </div>
         <div className="homeright">
             <div className="homerighttop">
