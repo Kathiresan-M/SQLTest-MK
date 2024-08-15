@@ -1,17 +1,33 @@
-import React, { useEffect,useState } from 'react'
+import React, { useEffect,useState,useContext } from 'react'
 import '../css/Popup.css'
-import {Link} from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { cartContext } from '../App';
 
 export const ShowDiv = ({show,RegisterDetails,setMoveTopics,setUserDetails}) => {
+
+  const [username,setUsername] = useState(RegisterDetails.username);
+  const [password,setPassword] = useState(RegisterDetails.password);
+  const [phoneNumber,setPhoneNumber] = useState(RegisterDetails.phoneNumber);
+  const [email,setEmail] = useState(RegisterDetails.email);
+  const [college,setCollege] = useState(RegisterDetails.college);
+  const [passedOutYear,setPassedOutYear] = useState(RegisterDetails.passedOutYear);
+  const [mark,setMark] = useState(0);
+  const [questionsAttend,setQuestionsAttend] = useState([]);
+  const [topicsFinised,settopicsFinised] = useState([]);
+  const [topics_completed,setTopics_completed] = useState(0);
+  const [topics_incompleted,setTopics_incompleted] = useState(0);
+  const [process,setProcess] = useState(0);
+
   const [timeLeft, setTimeLeft] = useState(300); // 300 seconds = 5 minutes
   const [disableTimer,setDisableTimer] = useState(false);
   const [loading,setLoading] = useState(false);
   const [creating,setCreating] = useState(false);
-  const [inputOtp,setInputOtp] = useState();
+  const [user_otp,setInputOtp] = useState();
   const [validOtp,setValidOtp] = useState(false);
   const [validStatus,setValidStatus] = useState(false);
   const navigate = useNavigate();
+  const {backendUrl} = useContext(cartContext);
 
   useEffect(() => {
     if (timeLeft === 0) {
@@ -34,37 +50,30 @@ export const ShowDiv = ({show,RegisterDetails,setMoveTopics,setUserDetails}) => 
 
   const handleSubmitBtn = async () => {
     setCreating(true);
-      try {
-        const response = await fetch(`https://sqlserver-mk.onrender.com/register-user?user_otp=${Number(inputOtp)}&username=${RegisterDetails[0]}&password=${RegisterDetails[1]}&mobile=${RegisterDetails[2]}&gmail=${RegisterDetails[3]}&college=${RegisterDetails[4]}&yearOfGraduation=${RegisterDetails[5]}`);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const uservalid = await response.json();
-        if(!uservalid){
-          setValidOtp(false);
-        }else{
-          setUserDetails(uservalid);
+      axios.post(`${backendUrl}register`,{user_otp,email,username,password,phoneNumber,college,passedOutYear,mark,questionsAttend,topicsFinised,topics_completed,topics_incompleted,process})
+        .then(result => {
+          console.log(result.data);
+          if(!result.data){
+            setUserExists(true);
+          }else{
+            console.log(result);
           window.localStorage.setItem("isLoggedIn",true);
-          window.localStorage.setItem("isLoggedDetails",JSON.stringify(uservalid));
-          navigate("/Register");
-          console.log(uservalid);
-          setMoveTopics(true);
-        }
-        setCreating(false);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-        setError(error.message);
-      }
+          window.localStorage.setItem("isLoggedDetails",JSON.stringify(result.data));
+          navigate("/Home");
+          }
+          
+        })
+        .catch(err => console.log(err))
   }
 
   const handleResendBtn = async () => {
     setLoading(true);
       try {
-        const response = await fetch(`https://sqlserver-mk.onrender.com/check-user?gmail=${RegisterDetails[3]}`);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const result = await response.json();
+        // const response = await fetch(`https://sqlserver-mk.onrender.com/check-user?gmail=${RegisterDetails[3]}`);
+        // if (!response.ok) {
+        //   throw new Error(`HTTP error! status: ${response.status}`);
+        // }
+        // const result = await response.json();
         setLoading(false);
         setTimeLeft(300);
         setDisableTimer(false);
@@ -75,7 +84,7 @@ export const ShowDiv = ({show,RegisterDetails,setMoveTopics,setUserDetails}) => 
   };
 
   return (
-    <div className={`popup ${show ? 'show' : ''}`}>
+    <div className='popup'>
       <div className="popup-inner">
         <div className="inner-div">
         <h3>OTP Verification</h3>
