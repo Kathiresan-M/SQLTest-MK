@@ -16,7 +16,7 @@
     background-color: #735DA5;
     padding: 10px;
     color: white;
-    height: 120px;
+    height: 150px;
 }
 .userwel h3{
     margin-top: 10px;
@@ -25,7 +25,7 @@
     text-align: center;
     background-color: cornsilk;
     color: black;
-    width: 190px;
+    width: fit-content;
     float: left;
     border-radius: 7px;
     padding: 5px 10px;
@@ -34,7 +34,7 @@
     text-align: center;
     background-color: cornsilk;
     color: black;
-    width: 180px;
+    width: fit-content;
     float: right;
     border-radius: 7px;
     padding: 5px 10px;
