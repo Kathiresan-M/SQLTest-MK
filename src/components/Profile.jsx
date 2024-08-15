@@ -42,39 +42,33 @@ export const Profile = () => {
   return (
     <div className="profile-main">
       <h3 className='pro-details'>Profile Details</h3>
-      <div className="container">
-        <div className="row margin-bt10">
-          <div className="col-sm details">
-              <h3>Name</h3>
-              <input type="text" value={name || ''} onChange={(e) => setName(e.target.value)}  className={(!editTrue)?'disabled':''}/>
-          </div>
-          <div className="col-sm details">
-            <h3>Email ID</h3>
-            <input type="text" value={email || ''} onChange={(e) => setEmail(e.target.value)} className={(!editTrue)?'disabled':''}/>
-          </div>
+      <div className="profile-container">
+        <div className="details">
+            <h3>Name</h3>
+            <input type="text" value={name || ''} onChange={(e) => setName(e.target.value)}  className={(!editTrue)?'disabled':''}/>
         </div>
-        <div className="row margin-bt10">
-          <div className="col-sm details">
-            <h3>Phone Number</h3>
-            <input type="text" value={phoneNumber || ''} onChange={(e) => setPhoneNumber(e.target.value)} className={(!editTrue)?'disabled':''}/>
-          </div>
-          <div className="col-sm details">
-            <h3>College</h3>
-            <input type="text" value={college || ''} onChange={(e) => setCollege(e.target.value)} className={(!editTrue)?'disabled':''}/>
-          </div>
+        <div className="details">
+          <h3>Email ID</h3>
+          <input type="text" value={email || ''} onChange={(e) => setEmail(e.target.value)} className={(!editTrue)?'disabled':''}/>
         </div>
-        <div className="row margin-bt10">
-          <div className="col-sm details">
-            <h3>Passed Out Year</h3>
-            <input type="text" value={passedOutYear || ''} onChange={(e) => setPassedOutYear(e.target.value)} className={(!editTrue)?'disabled':''}/>
-          </div>
-          <div className="col-sm details">
-            {!editTrue && <button className='edit-btn' onClick={() => setEditTrue(true)}>Edit</button>}
-            {editTrue && <button className='edit-btn' onClick={() => {
-              setEditTrue(false);
-              handleProfileSubmit();
-              }}>Submit</button>}
-          </div>
+        <div className="details">
+          <h3>Phone Number</h3>
+          <input type="text" value={phoneNumber || ''} onChange={(e) => setPhoneNumber(e.target.value)} className={(!editTrue)?'disabled':''}/>
+        </div>
+        <div className="details">
+          <h3>College</h3>
+          <input type="text" value={college || ''} onChange={(e) => setCollege(e.target.value)} className={(!editTrue)?'disabled':''}/>
+        </div>
+        <div className="details">
+          <h3>Passed Out Year</h3>
+          <input type="text" value={passedOutYear || ''} onChange={(e) => setPassedOutYear(e.target.value)} className={(!editTrue)?'disabled':''}/>
+        </div>
+        <div className="details">
+          {!editTrue && <button className='edit-btn' onClick={() => setEditTrue(true)}>Edit</button>}
+          {editTrue && <button className='edit-btn' onClick={() => {
+            setEditTrue(false);
+            handleProfileSubmit();
+            }}>Submit</button>}
         </div>
       </div>
     </div>
