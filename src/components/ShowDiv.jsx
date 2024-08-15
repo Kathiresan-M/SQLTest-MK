@@ -54,7 +54,7 @@ export const ShowDiv = ({show,RegisterDetails,setMoveTopics,setUserDetails}) => 
         .then(result => {
           console.log(result.data);
           if(!result.data){
-            setUserExists(true);
+            setValidStatus(true);
           }else{
             console.log(result);
           window.localStorage.setItem("isLoggedIn",true);
@@ -69,11 +69,18 @@ export const ShowDiv = ({show,RegisterDetails,setMoveTopics,setUserDetails}) => 
   const handleResendBtn = async () => {
     setLoading(true);
       try {
-        // const response = await fetch(`https://sqlserver-mk.onrender.com/check-user?gmail=${RegisterDetails[3]}`);
-        // if (!response.ok) {
-        //   throw new Error(`HTTP error! status: ${response.status}`);
-        // }
-        // const result = await response.json();
+        console.log(email);
+        axios.post(`${backendUrl}user-already`,{email})
+        .then(result => {
+          if(!result.data){
+            setUserExists(true);
+          }else{
+            setStartTimer(true);
+            setShowPopup(true);
+          }
+          
+        })
+        .catch(err => console.log(err))
         setLoading(false);
         setTimeLeft(300);
         setDisableTimer(false);
