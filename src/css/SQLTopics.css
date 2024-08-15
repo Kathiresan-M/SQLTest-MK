@@ -246,6 +246,13 @@
 
 /* Mobile Size CSS */
 @media (max-width:480px){
+    .sqltopics-main-container{
+    background-color: #F5F5F5;
+    height: 100vh;
+    width: 100%;
+    overflow: auto;
+    padding: 20px;
+}
     .usernameSQL{
         padding: 6px;
         border-radius: 5px;
