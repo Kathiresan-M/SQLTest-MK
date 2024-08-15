@@ -19,6 +19,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 50px;
 }
 .dashboard2{
     height: 200px;
@@ -114,4 +115,44 @@
 .process img{
     height: 70px;
     width: 70px;
+}
+
+/* Mobile css 425 */
+@media (max-width:425px) {
+    .dashboard1{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin: 10px auto;
+    }
+    .dashboard2{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .topics-incompt{
+        width: 350px;
+        margin-bottom: 10px;
+    }
+    .topics-compt{
+        width: 350px;
+        margin-bottom: 10px;
+    }
+    .marks{
+        width: 350px;
+        margin-bottom: 10px;
+    }
+    .process{
+        width: 350px;
+        margin-bottom: 10px;
+    }
+    .dashboard-content{
+        gap: 30px;
+    }
+    .homerighttop{
+        display: none;
+    }
 }
