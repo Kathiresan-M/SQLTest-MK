@@ -4,6 +4,7 @@ import {useNavigate} from 'react-router-dom'
 import '../css/Login.css'
 import axios from 'axios';
 import { cartContext } from '../App';
+import { ShowDiv } from './ShowDiv';
 
 
 
@@ -30,7 +31,8 @@ export const Register = () => {
   const [startTimer, setStartTimer] = useState(false);
   const [moveTopics,setMoveTopics] = useState(false);
   const [userExists,setUserExists] = useState(false);
-  const RegisterDetails = [username,password,phoneNumber,email,college,passedOutYear,questionsAttend];
+  const RegisterDetails = {email,username,password,phoneNumber,college,passedOutYear,mark,questionsAttend,topicsFinised,topics_completed,topics_incompleted,process};
+  
   const navigate = useNavigate();
   const {backendUrl} = useContext(cartContext);
 
@@ -41,15 +43,26 @@ export const Register = () => {
       setFillAllData(true);
       setLoading(false);
     }else{
-      axios.post(`${backendUrl}register`,{email,username,password,phoneNumber,college,passedOutYear,mark,questionsAttend,topicsFinised,topics_completed,topics_incompleted,process})
+      // axios.post(`${backendUrl}register`,{email,username,password,phoneNumber,college,passedOutYear,mark,questionsAttend,topicsFinised,topics_completed,topics_incompleted,process})
+      //   .then(result => {
+      //     if(!result.data){
+      //       setUserExists(true);
+      //     }else{
+      //       console.log(result);
+      //     window.localStorage.setItem("isLoggedIn",true);
+      //     window.localStorage.setItem("isLoggedDetails",JSON.stringify(result.data));
+      //     navigate("/Home");
+      //     }
+          
+      //   })
+      //   .catch(err => console.log(err))
+      axios.post(`${backendUrl}user-already`,{email})
         .then(result => {
           if(!result.data){
             setUserExists(true);
           }else{
-            console.log(result);
-          window.localStorage.setItem("isLoggedIn",true);
-          window.localStorage.setItem("isLoggedDetails",JSON.stringify(result.data));
-          navigate("/Home");
+            setStartTimer(true);
+            setShowPopup(true);
           }
           
         })
@@ -60,7 +73,11 @@ export const Register = () => {
 
   return (
     <>
-    <div className="maincontainer">
+    {
+      showPopup? 
+      <ShowDiv show={showPopup} startTimer={startTimer} RegisterDetails={RegisterDetails} setMoveTopics={setMoveTopics} setUserDetails={setUserDetails}/> 
+      :
+      <div className="maincontainer">
       <div className="registerpage">
           <div className="logo">REGISTER</div>
           <div className="username">
@@ -94,8 +111,9 @@ export const Register = () => {
             I have a account? Login
           </div>
       </div>
-        {/* <ShowDiv show={showPopup} startTimer={startTimer} RegisterDetails={RegisterDetails} setMoveTopics={setMoveTopics} setUserDetails={setUserDetails}/>  */}
-    </div>
+        
+    </div> 
+    }
   </>
   );
 }
