@@ -17,6 +17,11 @@ export const Register = () => {
   const [passedOutYear,setPassedOutYear] = useState(null);
   const [mark,setMark] = useState(0);
   const [questionsAttend,setQuestionsAttend] = useState([]);
+  const [topicsFinised,settopicsFinised] = useState([]);
+  const [topics_completed,setTopics_completed] = useState(0);
+  const [topics_incompleted,setTopics_incompleted] = useState(0);
+  const [process,setProcess] = useState(0);
+
   const [otp,setOtp] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
   const [userDetails,setUserDetails] = useState();
@@ -36,7 +41,7 @@ export const Register = () => {
       setFillAllData(true);
       setLoading(false);
     }else{
-      axios.post(`${backendUrl}register`,{email,username,password,phoneNumber,college,passedOutYear,mark})
+      axios.post(`${backendUrl}register`,{email,username,password,phoneNumber,college,passedOutYear,mark,questionsAttend,topicsFinised,topics_completed,topics_incompleted,process})
         .then(result => {
           if(!result.data){
             setUserExists(true);
