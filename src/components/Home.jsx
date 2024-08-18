@@ -44,9 +44,10 @@ export const Home = () => {
     useEffect(() => {
         axios.post(`${backendUrl}update-curdetails`,{emailId}).then(result => {
             setValidUser1(result.data);
+            setProfileName(result.data.username);
             setMarkScore(result.data)
         });
-    },[handleDashboardBtn])
+    },[handleDashboardBtn,handleSQLTopicsBtn])
 
   return (
     <div className='HomePage'>
@@ -63,16 +64,16 @@ export const Home = () => {
         </div>
         <div className="homeright">
             <div className="homerighttop">
-                <div className="searchhome">
+                {/* <div className="searchhome">
                     <input type="text" placeholder='dashboard'/>
                     <button className="srcBtn">Search</button>
-                </div>
+                </div> */}
                 <div className="profilehome"><img src={profileicon} alt="" /></div>
                 <div className="pronamehome">{profileName}</div>
             </div>
             <div className="homerightcenter">
                 {dashboardValid && <Dashboard markScore={markScore}/>}    
-                {sqlTopicsValid && <SQLTopics/>}
+                {sqlTopicsValid && <SQLTopics markScore={markScore}/>}
                 {profileValid && <Profile />}
             </div>
         </div>

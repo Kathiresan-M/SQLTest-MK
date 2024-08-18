@@ -10,6 +10,7 @@
     float: left;
     display: flex;
     flex-direction: column;
+    position: fixed;
 }
 .homeright{
     height: 100vh;

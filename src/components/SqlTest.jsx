@@ -1,5 +1,6 @@
 import React, { useContext, useState,useEffect } from 'react'
 import { cartContext } from '../App';
+import {useNavigate} from 'react-router-dom'
 import { useLocation } from 'react-router-dom';
 import '../css/SqlTest.css'
 import axios from 'axios';
@@ -62,7 +63,7 @@ const QuestionSet = ({ count, data1, var1, var2,showExpected,setShowExpected }) 
     )
 }
 
-const ExecuteQuery = ({backendUrl,data1,var1,var2,count,inputData,setInputData,showOutput,setShowOutput,displayAnsNotification,setDisplayAnsNotification,queryExecuted,setQueryExecuted,questionExist,setquestionExist,emailId,markScore,setMarkScore,errorQuery,setErrorQuery }) => {
+const ExecuteQuery = ({backendUrl,data1,var1,var2,count,inputData,setInputData,showOutput,setShowOutput,displayAnsNotification,setDisplayAnsNotification,queryExecuted,setQueryExecuted,questionExist,setquestionExist,emailId,markScore,setMarkScore,errorQuery,setErrorQuery,questionCount,setQuestionCount }) => {
     
     const [users, setusers] = useState(null);
     
@@ -107,8 +108,11 @@ const ExecuteQuery = ({backendUrl,data1,var1,var2,count,inputData,setInputData,s
             setAnsCorrect(checkTrue);
                     if(checkTrue){
                         try {
-                            const question={"question":data1[var1][var2][count].Question};
+                            const MainTopic = String(var1);
+                            const SubTopic = String(var2);
+                            const question={MainTopic: MainTopic,SubTopic : SubTopic,question : data1[var1][var2][count].Question};
                             const response = await axios.post(`${backendUrl}add-question`, {emailId,question});
+                            console.log("ithanda count : ",response);
                         }catch (error) {
                             console.error('Error:', error);
                         }
@@ -216,6 +220,7 @@ export const SqlTest = () => {
     // const data1 = data();
     const {Data,backendUrl} = useContext(cartContext);
     const data1 = Data;
+    const navigate = useNavigate();
 
     const { search } = useLocation();
 
@@ -225,7 +230,11 @@ export const SqlTest = () => {
     const var2 = parseInt(params.get('var2'));
     const var3 = params.get('var3');
     const var4 = params.get('var4');
+    const MainTopic = String(var1);
+    const SubTopic = String(var2);
     const [markScore,setMarkScore ]= useState(0);
+    const [questionCount,setQuestionCount] = useState(0);
+    const [savePopup,setSavePopup] = useState(false);
 
     const handleNextBtn = () => {
         if(inputData !== ''){
@@ -253,6 +262,15 @@ export const SqlTest = () => {
         setErrorQuery(false);
         setIndexOfQuestion((0 !== indexOfQuestion) ? (indexOfQuestion - 1) : indexOfQuestion);
     }
+
+    const handleMarkAsFinishedBtn = () => {
+        const question = {MainTopic : MainTopic,SubTopic : SubTopic}
+        axios.post(`${backendUrl}update-topic`,{emailId,MainTopic,SubTopic,question}).then(result => {
+            
+        });
+        navigate("/Home");
+    }
+
     useEffect(() => {
         axios.post(`${backendUrl}update-curdetails`,{emailId}).then(result => {
             setMarkScore(result.data.mark);
@@ -260,8 +278,18 @@ export const SqlTest = () => {
         });
     },[handlePreviousBtn,handleNextBtn,ExecuteQuery]);
 
+    useEffect(() => {
+        axios.post(`${backendUrl}question-length`,{emailId,MainTopic,SubTopic}).then(result => {
+            console.log(result.data.count);
+            setQuestionCount(result.data.count);
+        });
+    },[handlePreviousBtn,handleNextBtn])
+
+
+
     return (
         <div className='sqltest-main-container'>
+                <button className='return-home' onClick={() => navigate("/Home")}><i className="fa-solid fa-house"></i> Home</button>
                 <h1 className='mainTitle'>SQL Codebreaker Challenge</h1>
                 <div className="userwel">
                     <h2>{var3}</h2>
@@ -274,15 +302,23 @@ export const SqlTest = () => {
                         <QuestionSet count={indexOfQuestion} data1={data1} var1={var1} var2={var2} showExpected={showExpected} setShowExpected={setShowExpected} />
                     </div>
                     <div className="sqltest-right">
-                        <ExecuteQuery backendUrl={backendUrl} count={indexOfQuestion} data1={data1} var1={var1} var2={var2} inputData={inputData} setInputData={setInputData} showOutput={showOutput} setShowOutput={setShowOutput} displayAnsNotification={displayAnsNotification} setDisplayAnsNotification={setDisplayAnsNotification} queryExecuted={queryExecuted} setQueryExecuted={setQueryExecuted} questionExist={questionExist} setquestionExist={setquestionExist} emailId={emailId} markScore={markScore} setMarkScore={setMarkScore} errorQuery={errorQuery} setErrorQuery={setErrorQuery} />
+                        <ExecuteQuery backendUrl={backendUrl} count={indexOfQuestion} data1={data1} var1={var1} var2={var2} inputData={inputData} setInputData={setInputData} showOutput={showOutput} setShowOutput={setShowOutput} displayAnsNotification={displayAnsNotification} setDisplayAnsNotification={setDisplayAnsNotification} queryExecuted={queryExecuted} setQueryExecuted={setQueryExecuted} questionExist={questionExist} setquestionExist={setquestionExist} emailId={emailId} markScore={markScore} setMarkScore={setMarkScore} errorQuery={errorQuery} setErrorQuery={setErrorQuery} questionCount={questionCount} setQuestionCount={setQuestionCount}/>
                         <div className="leftright1">
                             <button className='previous-btn' onClick={handlePreviousBtn}>Previous</button>
-                            <button className='next-btn' onClick={handleNextBtn}>Next</button>
+                            {(data1[var1][var2].length === questionCount)? <button className='markAs-btn' onClick={() => setSavePopup(true)}>Mark as Finished</button> : <button className='next-btn' onClick={handleNextBtn}>Next</button>}
                         </div>
                     </div>
                 </div>
                 <div className='clear-both'></div>
                 <div className='empty'></div>
+                {savePopup && <div class="popup-container">
+                    <div class="cookiesContent" id="cookiesPopup">
+                      <button class="close">✖</button>
+                      <img src="https://cdn-icons-png.flaticon.com/512/1047/1047711.png" alt="cookies-img" />
+                      <p>Congratulations! You have successfully completed the test.</p>
+                      <button class="accept" onClick={handleMarkAsFinishedBtn}>Done</button>
+                    </div>
+                </div>}
         </div>
     )
 }

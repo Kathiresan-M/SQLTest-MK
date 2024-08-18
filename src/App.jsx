@@ -8,12 +8,14 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Login } from './components/Login.jsx';
 import { Register } from './components/Register.jsx';
 import { Home } from './components/Home.jsx';
+import { ShowDiv } from './components/ShowDiv.jsx';
+import  FullscreenComponent from './components/FullscreenComponent.jsx';
 
 
 export const cartContext = createContext();
 
-// const backendUrl = "http://localhost:5000/";
-const backendUrl = "https://sqlserver-mk.onrender.com/";
+const backendUrl = "http://localhost:5000/";
+// const backendUrl = "https://sqlserver-mk.onrender.com/";
 
 function App() { 
   const isLogin = window.localStorage.getItem("isLoggedIn");
@@ -31,6 +33,8 @@ function App() {
               <Route path='/Registeration' element={<Register />} />
               <Route path='/SQLTopics' element={<SQLTopics />} />
               <Route path='/SqlTest' element={<SqlTest />} />
+              <Route path='/ShowDiv' element={<ShowDiv />} />
+              <Route path='/FullscreenComponent' element={<FullscreenComponent />} />
             </Routes>
           </div>
     </BrowserRouter>

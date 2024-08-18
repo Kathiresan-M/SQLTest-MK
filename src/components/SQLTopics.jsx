@@ -2,15 +2,12 @@ import React, { useEffect, useState } from 'react'
 import '../css/SQLTopics.css'
 import {Link} from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
-import profileimg from '../assets/profile.png'
+import lockIcon from '../assets/lock-solid.svg'
  
-export const SQLTopics = ({userDetails}) => {
+export const SQLTopics = ({markScore}) => {
     
     const loginIs = JSON.parse(window.localStorage.getItem("isLoggedDetails"));
-    console.log(loginIs);
     const [emailId,setEmailId] = useState(loginIs[1]);
-    const [profileName,setProfileName] = useState(loginIs[2]);
-    const [markScore,setMarkScore] = useState(Number(loginIs[3]));
     const navigate = useNavigate();
  
     // useEffect(() => {
@@ -53,7 +50,7 @@ export const SQLTopics = ({userDetails}) => {
                     <ul>
                         <li>
                             <div className="heading">Basics</div>
-                            <div className="sublist"><Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${0}&var2=${0}&var3=${"Basics"}&var4=${"Select, Alias, Distinct, Order by, Limit, Offset"}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}` }}>Select, Alias, Distinct, Order by, Limit, Offset</Link></div>
+                            <div className="sublist"><Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${0}&var2=${0}&var3=${"Basics"}&var4=${"Select, Alias, Distinct, Order by, Limit, Offset"}&emailId=${emailId}` }}>Select, Alias, Distinct, Order by, Limit, Offset</Link></div>
                             <div className="desc">Structured query language (SQL) is a programming language 
                             for storing and processing information in a relational database. A relational database 
                             stores information in tabular form, with rows and columns representing 
@@ -61,15 +58,15 @@ export const SQLTopics = ({userDetails}) => {
                         </li>
                         <li>
                             <div className="heading heading-2">Filtering Data</div>
-                            <div className="sublist"><Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${1}&var2=${0}&var3=${"Filtering Data"}&var4=${"SQL WHERE"}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}` }}>SQL WHERE</Link></div>
-                            <div className="sublist"><Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${1}&var2=${1}&var3=${"Filtering Data"}&var4=${"SQL Comparison Operators"}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}` }}>SQL Comparison Operators</Link></div>
-                            <div className="sublist"><Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${1}&var2=${2}&var3=${"Filtering Data"}&var4=${"SQL AND"}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}` }}>SQL AND</Link></div>
-                            <div className="sublist"><Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${1}&var2=${3}&var3=${"Filtering Data"}&var4=${"SQL OR"}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}` }}>SQL OR</Link></div>
-                            <div className="sublist"><Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${1}&var2=${4}&var3=${"Filtering Data"}&var4=${"SQL BETWEEN"}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}` }}>SQL BETWEEN</Link></div>
-                            <div className="sublist"><Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${1}&var2=${5}&var3=${"Filtering Data"}&var4=${"SQL IN"}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}` }}>SQL IN</Link></div>
-                            <div className="sublist"><Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${1}&var2=${6}&var3=${"Filtering Data"}&var4=${"SQL LIKE"}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}` }}>SQL LIKE</Link></div>
-                            <div className="sublist"><Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${1}&var2=${7}&var3=${"Filtering Data"}&var4=${"SQL NOT"}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}` }}>SQL NOT</Link></div>
-                            <div className="sublist"><Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${1}&var2=${8}&var3=${"Filtering Data"}&var4=${"SQL IS NULL"}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}` }}>SQL IS NULL</Link></div>
+                            <div className="sublist">{!(markScore.topics_completed >= 1) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}<Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${1}&var2=${0}&var3=${"Filtering Data"}&var4=${"SQL WHERE"}&emailId=${emailId}&emailId=${emailId}` }}>SQL WHERE</Link></div>
+                            <div className="sublist">{!(markScore.topics_completed >= 2) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}<Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${1}&var2=${1}&var3=${"Filtering Data"}&var4=${"SQL Comparison Operators"}&emailId=${emailId}&emailId=${emailId}` }}>SQL Comparison Operators</Link></div>
+                            <div className="sublist">{!(markScore.topics_completed >= 3) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}<Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${1}&var2=${2}&var3=${"Filtering Data"}&var4=${"SQL AND"}&emailId=${emailId}` }}>SQL AND</Link></div>
+                            <div className="sublist">{!(markScore.topics_completed >= 4) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}<Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${1}&var2=${3}&var3=${"Filtering Data"}&var4=${"SQL OR"}&emailId=${emailId}` }}>SQL OR</Link></div>
+                            <div className="sublist">{!(markScore.topics_completed >= 5) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}<Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${1}&var2=${4}&var3=${"Filtering Data"}&var4=${"SQL BETWEEN"}&emailId=${emailId}` }}>SQL BETWEEN</Link></div>
+                            <div className="sublist">{!(markScore.topics_completed >= 6) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}<Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${1}&var2=${5}&var3=${"Filtering Data"}&var4=${"SQL IN"}&emailId=${emailId}` }}>SQL IN</Link></div>
+                            <div className="sublist">{!(markScore.topics_completed >= 7) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}<Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${1}&var2=${6}&var3=${"Filtering Data"}&var4=${"SQL LIKE"}&emailId=${emailId}` }}>SQL LIKE</Link></div>
+                            <div className="sublist">{!(markScore.topics_completed >= 8) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}<Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${1}&var2=${7}&var3=${"Filtering Data"}&var4=${"SQL NOT"}&emailId=${emailId}` }}>SQL NOT</Link></div>
+                            <div className="sublist">{!(markScore.topics_completed >= 9) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}<Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${1}&var2=${8}&var3=${"Filtering Data"}&var4=${"SQL IS NULL"}&emailId=${emailId}` }}>SQL IS NULL</Link></div>
                             <div className="desc">SQL filters are text strings that you 
                             use to specify a subset of the data items in an internal or SQL database data type.
                              For SQL database and internal data types, the filter is an SQL WHERE clause that provides a set of comparisons
@@ -77,14 +74,14 @@ export const SQLTopics = ({userDetails}) => {
                         </li>
                         <li>
                             <div className="heading heading-3">Wildcards</div>
-                            <div className="sublist"><Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${2}&var2=${0}&var3=${"Wildcards"}&var4=${"Wildcards"}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}` }}>Wildcards</Link></div>
+                            <div className="sublist">{!(markScore.topics_completed >= 10) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}<Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${2}&var2=${0}&var3=${"Wildcards"}&var4=${"Wildcards"}&emailId=${emailId}` }}>Wildcards</Link></div>
                             <div className="desc">A wildcard character is used to substitute one or more characters in a string. 
                             Wildcard characters are used with the LIKE operator. 
                             The LIKE operator is used in a WHERE clause to search for a specified pattern in a column.</div>
                         </li>
                         <li>
                             <div className="heading heading-4">Aggregation Functions</div>
-                            <div className="sublist"><Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${3}&var2=${0}&var3=${"Aggregation Functions"}&var4=${"Aggregation Functions"}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}` }}>Aggregation Functions</Link></div>
+                            <div className="sublist">{!(markScore.topics_completed >= 11) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}<Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${3}&var2=${0}&var3=${"Aggregation Functions"}&var4=${"Aggregation Functions"}&emailId=${emailId}` }}>Aggregation Functions</Link></div>
                             <div className="desc">An aggregate function performs a calculation on a set of values, 
                             and returns a single value. Except for COUNT(*) , aggregate functions ignore null values.
                              Aggregate functions are often used with the GROUP BY clause of the SELECT statement. 
@@ -93,11 +90,11 @@ export const SQLTopics = ({userDetails}) => {
                         </li>
                         <li>
                             <div className="heading heading-5">String Manipulation</div>
-                            <div className="sublist"><Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${4}&var2=${0}&var3=${"String Manipulation"}&var4=${"Concat"}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}` }}>Concat</Link></div>
-                            <div className="sublist"><Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${4}&var2=${1}&var3=${"String Manipulation"}&var4=${"Upper"}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}` }}>Upper</Link></div>
-                            <div className="sublist"><Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${4}&var2=${2}&var3=${"String Manipulation"}&var4=${"Lower"}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}` }}>Lower</Link></div>
-                            <div className="sublist"><Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${4}&var2=${3}&var3=${"String Manipulation"}&var4=${"Substr"}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}` }}>Substr</Link></div>
-                            <div className="sublist"><Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${4}&var2=${4}&var3=${"String Manipulation"}&var4=${"Instr"}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}` }}>Instr</Link></div>
+                            <div className="sublist">{!(markScore.topics_completed >= 12) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}<Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${4}&var2=${0}&var3=${"String Manipulation"}&var4=${"Concat"}&emailId=${emailId}` }}>Concat</Link></div>
+                            <div className="sublist">{!(markScore.topics_completed >= 13) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}<Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${4}&var2=${1}&var3=${"String Manipulation"}&var4=${"Upper"}&emailId=${emailId}` }}>Upper</Link></div>
+                            <div className="sublist">{!(markScore.topics_completed >= 14) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}<Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${4}&var2=${2}&var3=${"String Manipulation"}&var4=${"Lower"}&emailId=${emailId}` }}>Lower</Link></div>
+                            <div className="sublist">{!(markScore.topics_completed >= 15) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}<Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${4}&var2=${3}&var3=${"String Manipulation"}&var4=${"Substr"}&emailId=${emailId}` }}>Substr</Link></div>
+                            <div className="sublist">{!(markScore.topics_completed >= 16) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}<Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${4}&var2=${4}&var3=${"String Manipulation"}&var4=${"Instr"}&emailId=${emailId}` }}>Instr</Link></div>
                             <div className="desc">String Functions in SQL are built-in functions that
                              allow users to manipulate character data in various ways. These functions can perform tasks such as formatting text, 
                             extracting substrings, and searching for specific patterns within a string.
@@ -105,7 +102,7 @@ export const SQLTopics = ({userDetails}) => {
                         </li>
                         <li>
                             <div className="heading heading-6">Date Functions</div>
-                            <div className="sublist"><Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${5}&var2=${0}&var3=${"Date Functions"}&var4=${"Date, Day, month, year, quarter, week, dayname, current_date, datediff, date_add, date_sub"}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}` }}>Date, Day, month, year, quarter,<br /> week, dayname, current_date,<br /> datediff, date_add, date_sub</Link></div>
+                            <div className="sublist">{!(markScore.topics_completed >= 17) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}<Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${5}&var2=${0}&var3=${"Date Functions"}&var4=${"Date, Day, month, year, quarter, week, dayname, current_date, datediff, date_add, date_sub"}&emailId=${emailId}` }}>Date, Day, month, year, quarter,<br /> week, dayname, current_date,<br /> datediff, date_add, date_sub</Link></div>
                             <div className="desc">Date functions are functions that help to format 
                             dates and carry out date-related calculations on your data. 
                             They are usually only effective on data types that are in date format on SQL.
@@ -113,7 +110,7 @@ export const SQLTopics = ({userDetails}) => {
                         </li>
                         <li>
                             <div className="heading heading-7">Group by and Having Clause</div>
-                            <div className="sublist"><Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${6}&var2=${0}&var3=${"Group by and Having Clause"}&var4=${"Group by and Having Clause"}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}` }}>Group by and Having Clause</Link></div>
+                            <div className="sublist">{!(markScore.topics_completed >= 18) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}<Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${6}&var2=${0}&var3=${"Group by and Having Clause"}&var4=${"Group by and Having Clause"}&emailId=${emailId}` }}>Group by and Having Clause</Link></div>
                             <div className="desc">The GROUP BY clause combines similar rows, 
                             producing a single result row for each group of rows that have the same values, 
                             for each column listed in the Projection clause. 
@@ -122,16 +119,16 @@ export const SQLTopics = ({userDetails}) => {
                         </li>
                         <li>
                             <div className="heading heading-8">Joins</div>
-                            <div className="sublist"><Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${7}&var2=${0}&var3=${"Joins"}&var4=${"Joins"}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}` }}>Joins</Link></div>
+                            <div className="sublist">{!(markScore.topics_completed >= 19) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}<Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${7}&var2=${0}&var3=${"Joins"}&var4=${"Joins"}&emailId=${emailId}` }}>Joins</Link></div>
                             <div className="desc">JOIN is an SQL clause used to query and access data from multiple tables, 
                             based on logical relationships between those tables. In other words,
                              JOINS indicate how SQL Server should use data from one table to select the rows from another table.</div>
                         </li>
                         <li>
                             <div className="heading heading-9">Set Operations</div>
-                            <div className="sublist"><Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${8}&var2=${0}&var3=${"Set Operations"}&var4=${"SQL UNION"}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}` }}>SQL UNION</Link></div>
-                            <div className="sublist"><Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${8}&var2=${1}&var3=${"Set Operations"}&var4=${"SQL UNION ALL"}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}` }}>SQL UNION ALL</Link></div>
-                            <div className="sublist"><Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${8}&var2=${2}&var3=${"Set Operations"}&var4=${"SQL INTERSECT"}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}` }}>SQL INTERSECT</Link></div>
+                            <div className="sublist">{!(markScore.topics_completed >= 20) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}{!(markScore.topics_completed >= 2) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}<Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${8}&var2=${0}&var3=${"Set Operations"}&var4=${"SQL UNION"}&emailId=${emailId}` }}>SQL UNION</Link></div>
+                            <div className="sublist">{!(markScore.topics_completed >= 21) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}{!(markScore.topics_completed >= 2) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}<Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${8}&var2=${1}&var3=${"Set Operations"}&var4=${"SQL UNION ALL"}&emailId=${emailId}` }}>SQL UNION ALL</Link></div>
+                            <div className="sublist">{!(markScore.topics_completed >= 22) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}{!(markScore.topics_completed >= 2) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}<Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${8}&var2=${2}&var3=${"Set Operations"}&var4=${"SQL INTERSECT"}&emailId=${emailId}` }}>SQL INTERSECT</Link></div>
                             <div className="desc">Set operations in SQL is a type of operations which allow the results 
                             of multiple queries to be combined into a single result set. Set operators in SQL include
                              UNION , INTERSECT , and EXCEPT , which mathematically correspond to the concepts of
@@ -139,7 +136,7 @@ export const SQLTopics = ({userDetails}) => {
                         </li>
                         <li>
                             <div className="heading heading-10">Case Statements</div>
-                            <div className="sublist"><Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${9}&var2=${0}&var3=${"Case Statements"}&var4=${"Case Statements"}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}` }}>Case Statements</Link></div>
+                            <div className="sublist">{!(markScore.topics_completed >= 23) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}{!(markScore.topics_completed >= 2) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}<Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${9}&var2=${0}&var3=${"Case Statements"}&var4=${"Case Statements"}&emailId=${emailId}` }}>Case Statements</Link></div>
                             <div className="desc">The SQL CASE statement
                             The CASE statement is SQL's way of handling if/then logic. The CASE statement is followed by at 
                             least one pair of WHEN and THEN statements—SQL's equivalent of IF/THEN in Excel. 
@@ -148,7 +145,7 @@ export const SQLTopics = ({userDetails}) => {
                         </li>
                         <li>
                             <div className="heading heading-11">Sub Queries and Correlated Sub Querie</div>
-                            <div className="sublist"><Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${10}&var2=${0}&var3=${"Sub Queries and Correlated Sub Queries"}&var4=${"Sub Queries and Correlated Sub Queries"}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}` }}>Sub Queries and Correlated Sub Queries</Link></div>
+                            <div className="sublist">{!(markScore.topics_completed >= 24) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}{!(markScore.topics_completed >= 2) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}<Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${10}&var2=${0}&var3=${"Sub Queries and Correlated Sub Queries"}&var4=${"Sub Queries and Correlated Sub Queries"}&emailId=${emailId}` }}>Sub Queries and Correlated Sub Queries</Link></div>
                             <div className="desc">In a SQL database query, a correlated subquery 
                             (also known as a synchronized subquery) is a subquery (a query nested inside another query) that uses 
                             values from the outer query. 
@@ -156,8 +153,8 @@ export const SQLTopics = ({userDetails}) => {
                         </li>
                         <li>
                             <div className="heading heading-12">Conditional Filtering</div>
-                            <div className="sublist"><Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${11}&var2=${0}&var3=${"Conditional Filtering"}&var4=${"SQL EXISTS"}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}` }}>SQL EXISTS</Link></div>
-                            <div className="sublist"><Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${11}&var2=${1}&var3=${"Conditional Filtering"}&var4=${"SQL NOT EXISTS"}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}` }}>SQL NOT EXISTS</Link></div>
+                            <div className="sublist">{!(markScore.topics_completed >= 25) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}{!(markScore.topics_completed >= 2) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}<Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${11}&var2=${0}&var3=${"Conditional Filtering"}&var4=${"SQL EXISTS"}&emailId=${emailId}` }}>SQL EXISTS</Link></div>
+                            <div className="sublist">{!(markScore.topics_completed >= 26) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}{!(markScore.topics_completed >= 2) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}<Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${11}&var2=${1}&var3=${"Conditional Filtering"}&var4=${"SQL NOT EXISTS"}&emailId=${emailId}` }}>SQL NOT EXISTS</Link></div>
                             <div className="desc">In a SQL database query, a correlated subquery 
                             (also known as a synchronized subquery) is a subquery (a query nested inside another query) that uses 
                             values from the outer query. 
@@ -165,7 +162,7 @@ export const SQLTopics = ({userDetails}) => {
                         </li>
                         <li>
                             <div className="heading heading-13">Windows Functions</div>
-                            <div className="sublist"><Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${12}&var2=${0}&var3=${"Windows Functions"}&var4=${"Windows Functions"}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}` }}>Windows Functions</Link></div>
+                            <div className="sublist">{!(markScore.topics_completed >= 27) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}{!(markScore.topics_completed >= 2) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}<Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${12}&var2=${0}&var3=${"Windows Functions"}&var4=${"Windows Functions"}&emailId=${emailId}` }}>Windows Functions</Link></div>
                             <div className="desc">In SQL, a window function or analytic function is a function which uses
                              values from one or multiple rows to return a value for each row. (This contrasts with an aggregate 
                              function, which returns a single value for multiple rows.)
@@ -173,7 +170,7 @@ export const SQLTopics = ({userDetails}) => {
                         </li>
                         <li>
                             <div className="heading heading-14">Views and CTE</div>
-                            <div className="sublist"><Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${13}&var2=${0}&var3=${"Views and CTE"}&var4=${"Views and Common Table Expressions(CTE)"}&markScore=${markScore}&profileName=${profileName}&emailId=${emailId}` }}>Views and Common Table Expressions(CTE)</Link></div>
+                            <div className="sublist">{!(markScore.topics_completed >= 28) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}{!(markScore.topics_completed >= 2) && <div className='lock-tp'><img src={lockIcon} alt="" /></div>}<Link className='link-color' to={{pathname: "/SqlTest",search: `?var1=${13}&var2=${0}&var3=${"Views and CTE"}&var4=${"Views and Common Table Expressions(CTE)"}&emailId=${emailId}` }}>Views and Common Table Expressions(CTE)</Link></div>
                             <div className="desc">CTEs are temporary result sets used within the scope of a single
                              query and are often employed for complex or recursive queries. Views, on the other hand,
                               are permanent objects in the database used to simplify and abstract complex queries for 

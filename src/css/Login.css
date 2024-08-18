@@ -7,7 +7,7 @@
     justify-content: center;
     /* background-image: url(../assets/login.jpg); */
     /* background-color: rgb(241, 238, 238); */
-    background-color: rgb(82, 82, 253);
+    background-color: #999999;
     background-size: cover;
   }
   .loginpage {
@@ -27,18 +27,20 @@
     /* border: 1px solid rgba(245, 245, 245, 0.404); */
     border: 1px solid white;
     border-radius: 10px;
-    height: 560px;
+    height: fit-content;
     width: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: white;
     box-shadow: 5px 5px 5px rgba(8, 0, 0, 0.6);
+    padding-bottom: 10px;
     /* backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px); */
   }
   .logo {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial;
+    font-weight: bold;
     margin-top: 20px;
     font-size: 35px;
     font-weight: 300;
@@ -94,7 +96,8 @@
     border-radius: 100px;
     font-size: 20px;
     border: none;
-    background-color: rgb(116, 214, 247);
+    background-color: #0000FF;
+    color: white;
   }
   .hoverbtn:hover {
     background-color: rgb(216, 255, 255);
@@ -137,6 +140,16 @@
   color: red;
   font-family:monospace;
   border-radius: 7px;
+}
+.strong-pass{
+  /* background-color: rgb(50, 247, 172); */
+  width: fit-content;
+  padding: 5px;
+  text-align: center;
+  color: red;
+  font-family:sans-serif;
+  border-radius: 7px;
+  font-size: 12px;
 }
 .loading-wait{
   /* background-color: white; */

@@ -20,7 +20,7 @@ export const Register = () => {
   const [questionsAttend,setQuestionsAttend] = useState([]);
   const [topicsFinised,settopicsFinised] = useState([]);
   const [topics_completed,setTopics_completed] = useState(0);
-  const [topics_incompleted,setTopics_incompleted] = useState(0);
+  const [topics_incompleted,setTopics_incompleted] = useState(29);
   const [process,setProcess] = useState(0);
 
   const [otp,setOtp] = useState(null);
@@ -31,6 +31,8 @@ export const Register = () => {
   const [startTimer, setStartTimer] = useState(false);
   const [moveTopics,setMoveTopics] = useState(false);
   const [userExists,setUserExists] = useState(false);
+  const [validPassword,setValidPassword] = useState('true');
+  const [emailError, setEmailError] = useState("true");
   const RegisterDetails = {email,username,password,phoneNumber,college,passedOutYear,mark,questionsAttend,topicsFinised,topics_completed,topics_incompleted,process};
   
   const navigate = useNavigate();
@@ -71,6 +73,69 @@ export const Register = () => {
     }
   };
 
+  const validatePassword = (value) => {
+    // Password validation criteria
+    const minLength = 8;
+    const hasUpperCase = /[A-Z]/.test(value);
+    const hasLowerCase = /[a-z]/.test(value);
+    const hasNumber = /[0-9]/.test(value);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(value);
+
+    // Check for minimum length
+    if (value.length < minLength) {
+      setValidPassword("Password must be at least 8 characters long");
+      return;
+    }
+
+    // Check for uppercase letter
+    if (!hasUpperCase) {
+      setValidPassword("contain at least one uppercase letter.");
+      return;
+    }
+
+    // Check for lowercase letter
+    if (!hasLowerCase) {
+      setValidPassword("contain at least one lowercase letter.");
+      return;
+    }
+
+    // Check for number
+    if (!hasNumber) {
+      setValidPassword("contain at least one number.");
+      return;
+    }
+
+    // Check for special character
+    if (!hasSpecialChar) {
+      setValidPassword("contain at least one special character.");
+      return;
+    }
+
+    // If all checks pass
+      setValidPassword('true'),
+      setPassword(value)
+  };
+
+  // Function to validate email format
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  // Handle input change
+  const handleEmailChange = (e) => {
+    const newEmail = e.target.value;
+    setEmail(newEmail);
+
+    if (validateEmail(newEmail)) {
+      setEmailError("true"); // Clear error if email is valid
+      setEmail(newEmail);
+    } else {
+      setEmailError("Please enter a valid email address.");
+    }
+  };
+
+
   return (
     <>
     {
@@ -84,14 +149,16 @@ export const Register = () => {
             <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} className="name" />
           </div>
           <div className="password">
-            <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} className="pass" />
+            <input type="password" placeholder="Password" onChange={(e) => validatePassword(e.target.value)} className="pass" />
           </div>
+          {(validPassword === 'true')? <div></div>:<div className='strong-pass'>{validPassword}</div>}
           <div className="username">
             <input type="text" placeholder="Phone Number"  onChange={(e) => setPhoneNumber(e.target.value)}className="name" />
           </div>
           <div className="username">
-            <input type="text" placeholder="Email ID" onChange={(e) => setEmail(e.target.value)} className="name" />
+            <input type="text" placeholder="Email ID" onChange={(e) => handleEmailChange(e)} className="name" />
           </div>
+          {(emailError === 'true')? <div></div>:<div className='strong-pass'>{emailError}</div>}
           <div className="username">
             <input type="text" placeholder="College" onChange={(e) => setCollege(e.target.value)} className="name" />
           </div>
