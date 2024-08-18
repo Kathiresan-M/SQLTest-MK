@@ -14,8 +14,8 @@ import  FullscreenComponent from './components/FullscreenComponent.jsx';
 
 export const cartContext = createContext();
 
-const backendUrl = "http://localhost:5000/";
-// const backendUrl = "https://sqlserver-mk.onrender.com/";
+// const backendUrl = "http://localhost:5000/";
+const backendUrl = "https://sqlserver-mk.onrender.com/";
 
 function App() { 
   const isLogin = window.localStorage.getItem("isLoggedIn");
