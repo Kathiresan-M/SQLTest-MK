@@ -2730,7 +2730,7 @@
             {
                 "Question": "Write a SQL query to retrieve all employees' and dependents' full names.",
                 "Answer": [ [ "first_name", "last_name" ], [ "Steven", "King" ], [ "Neena", "Kochhar" ], [ "Lex", "De Haan" ], [ "Alexander", "Hunold" ], [ "Bruce", "Ernst" ], [ "David", "Austin" ], [ "Valli", "Pataballa" ], [ "Diana", "Lorentz" ], [ "Nancy", "Greenberg" ], [ "Daniel", "Faviet" ], [ "John", "Chen" ], [ "Ismael", "Sciarra" ], [ "Jose Manuel", "Urman" ], [ "Luis", "Popp" ], [ "Den", "Raphaely" ], [ "Alexander", "Khoo" ], [ "Shelli", "Baida" ], [ "Sigal", "Tobias" ], [ "Guy", "Himuro" ], [ "Karen", "Colmenares" ], [ "Matthew", "Weiss" ], [ "Adam", "Fripp" ], [ "Payam", "Kaufling" ], [ "Shanta", "Vollman" ], [ "Irene", "Mikkilineni" ], [ "John", "Russell" ], [ "Karen", "Partners" ], [ "Jonathon", "Taylor" ], [ "Jack", "Livingston" ], [ "Kimberely", "Grant" ], [ "Charles", "Johnson" ], [ "Sarah", "Bell" ], [ "Britney", "Everett" ], [ "Jennifer", "Whalen" ], [ "Michael", "Hartstein" ], [ "Pat", "Fay" ], [ "Susan", "Mavris" ], [ "Hermann", "Baer" ], [ "Shelley", "Higgins" ], [ "William", "Gietz" ], [ "Penelope", "Gietz" ], [ "Nick", "Higgins" ], [ "Ed", "Whalen" ], [ "Jennifer", "King" ], [ "Johnny", "Kochhar" ], [ "Bette", "De Haan" ], [ "Grace", "Faviet" ], [ "Matthew", "Chen" ], [ "Joe", "Sciarra" ], [ "Christian", "Urman" ], [ "Zero", "Popp" ], [ "Karl", "Greenberg" ], [ "Uma", "Mavris" ], [ "Vivien", "Hunold" ], [ "Cuba", "Ernst" ], [ "Fred", "Austin" ], [ "Helen", "Pataballa" ], [ "Dan", "Lorentz" ], [ "Bob", "Hartstein" ], [ "Lucille", "Fay" ], [ "Kirsten", "Baer" ], [ "Elvis", "Khoo" ], [ "Sandra", "Baida" ], [ "Cameron", "Tobias" ], [ "Kevin", "Himuro" ], [ "Rip", "Colmenares" ], [ "Julia", "Raphaely" ], [ "Woody", "Russell" ], [ "Alec", "Partners" ], [ "Sandra", "Taylor" ] ],
-                "Tables": [
+                "Table_Ques": [
                     {
                         "Table_Title": "Employees",
                         "Rows": [
@@ -2761,7 +2761,7 @@
             {
                 "Question": "Write a SQL query to retrieve the job IDs and salaries from the employees table where the salary is above 10000, and all the job IDs and maximum salaries from the jobs table where the maximum salary is above 15000, including duplicates.",
                 "Answer": [ [ "job_id", "salary" ], [ 4, 24000 ], [ 5, 17000 ], [ 5, 17000 ], [ 7, 12000 ], [ 14, 11000 ], [ 15, 14000 ], [ 15, 13500 ], [ 10, 13000 ], [ 2, 12000 ], [ 2, 16000 ], [ 4, 40000 ], [ 5, 30000 ], [ 7, 16000 ], [ 15, 20000 ] ],
-                "Tables": [
+                "Table_Ques": [
                     {
                         "Table_Title": "Employees",
                         "Rows": [
@@ -2791,7 +2791,7 @@
             {
                 "Question": "Write a SQL query to retrieve the department IDs and names from the departments table and the location IDs and city names from the locations table where the state_province is 'California', including duplicates.",
                 "Answer": [ [ "department_id", "department_name" ], [ 1, "Administration" ], [ 2, "Marketing" ], [ 3, "Purchasing" ], [ 4, "Human Resources" ], [ 5, "Shipping" ], [ 6, "IT" ], [ 7, "Public Relations" ], [ 8, "Sales" ], [ 9, "Executive" ], [ 10, "Finance" ], [ 11, "Accounting" ], [ 1500, "South San Francisco" ] ],
-                "Tables": [
+                "Table_Ques": [
                     {
                         "Table_Title": "Departments",
                         "Rows": [
